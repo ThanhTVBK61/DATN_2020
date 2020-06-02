@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlAddressFragmentAccount"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.view_account.AddressAccountFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbAddressAccount"
+        android:background="@color/colorWhite"
+        app:title="Địa chỉ">
+        <TextView
+            android:id="@+id/tvEditAddressAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sửa"
+            style="@style/textview_toolbar"
+            android:layout_marginLeft="235dp"
+            android:background="?attr/selectableItemBackground" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_below="@+id/tbAddressAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="10dp">
+        <!--        Địa chỉ    -->
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tỉnh/Thành phố"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Thành phố Hà Nội"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vAddressLine0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--         Địa điểm ưa thích-->
+        <LinearLayout
+            android:layout_below="@+id/vAddressLine0"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quận/Huyện"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvDistrict"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Đống Đa"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vAddressLine1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="111dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--        List trip        -->
+        <LinearLayout
+            android:layout_below="@+id/vAddressLine1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phường/Xã"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvSub-District"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Phương Mai"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vAddressLine2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="167dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--        History        -->
+        <LinearLayout
+            android:layout_below="@+id/vAddressLine2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ cụ thể"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/etDetailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="97 Phương Mai - Đống Đa -Hà Nội"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

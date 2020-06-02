@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorGrayWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.view_account.InformationAccountFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbInformationAccount"
+        android:background="@color/colorWhite"
+        app:title="Thông tin tài khoản">
+        <TextView
+            android:id="@+id/tvEditInformationAccount"
+            android:text="Sửa"
+            style="@style/textview_toolbar"
+            android:layout_marginLeft="115dp"
+            android:background="?attr/selectableItemBackground" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_below="@+id/tbInformationAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="10dp">
+        <!--        Địa chỉ    -->
+        <LinearLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Họ &amp; tên"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvNameInformationAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Phạm Văn Khải"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vInformationLine0"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="55dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--         Ngày sinh-->
+        <LinearLayout
+            android:layout_below="@+id/vInformationLine0"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày sinh"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvDatetimeInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="23/11/1998"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vInformationLine1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="111dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--        List trip        -->
+        <LinearLayout
+            android:layout_below="@+id/vInformationLine1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giới tính"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp"/>
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvSex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Nam"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/vInformationLine2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorGray"
+            android:layout_marginTop="167dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+        <!--        History        -->
+        <LinearLayout
+            android:layout_below="@+id/vInformationLine2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vài điều về bản thân"
+                android:textColor="@color/colorGray"
+                android:layout_marginTop="22dp"
+                android:layout_toRightOf="@+id/ivSettingAccount" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tvDescriptionInformation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="25dp"
+                android:text="Yêu màu hồng ghét sự giả dối"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.view_account.MainAccountFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbToolbarAccount"
+        android:background="@color/colorWhite"
+        app:title="Tài khoản" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tbToolbarAccount">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rlInformationAccount"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="27dp"
+                    android:src="@drawable/ic_next_account" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/tvNameAccount"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/civAccount"
+                    android:text="thslkdfld@gmail.com" />
+
+                <TextView
+                    android:id="@+id/tvNameAccount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_toRightOf="@id/civAccount"
+                    android:text="TRẦN VĂN THÀNH"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civAccount"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="20dp"
+                    android:src="@mipmap/moutain"
+                    app:civ_border_color="@color/colorBoundImage"
+                    app:civ_border_width="2dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:layout_marginTop="10dp">
+                <!--        Địa chỉ    -->
+                <LinearLayout
+                    android:id="@+id/llAddressAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivAddressAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_location_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Địa chỉ"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivAddressAccount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đống Đa - Hà Nội"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginLeft="125dp"
+                        android:layout_toRightOf="@+id/ivAddressAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/vLine0"
+                    android:layout_width="330dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginLeft="63dp"/>
+                <!--         Địa điểm ưa thích-->
+                <LinearLayout
+                    android:layout_below="@+id/vLine0"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivTripAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_star"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Địa điểm ưa thích"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/vLine1"
+                    android:layout_width="330dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginTop="129dp"
+                    android:layout_marginLeft="63dp"/>
+                <!--        List trip        -->
+                <LinearLayout
+                    android:background="?android:attr/selectableItemBackground"
+                    android:layout_below="@+id/vLine1"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivListTripAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_list_trip_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Danh sách chuyến đi"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+                <View
+                    android:id="@+id/vLine2"
+                    android:layout_width="330dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginTop="194dp"
+                    android:layout_marginLeft="63dp"/>
+                <!--        History        -->
+                <LinearLayout
+                    android:layout_below="@+id/vLine2"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivHistoryAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_history_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lịch sử"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivSettingAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_setting_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cài đặt"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mật khẩu &amp; bảo mật"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginLeft="125dp"/>
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhite">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivQuestionAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_question_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Câu hỏi thường gặp"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/vLine5"
+                    android:layout_width="330dp"
+                    android:layout_height="1dp"
+                    android:background="@color/colorGray"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginLeft="63dp"/>
+
+                <LinearLayout
+                    android:layout_below="@+id/vLine5"
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/ivSupportAccount"
+                        android:layout_width="23dp"
+                        android:layout_height="23dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/ic_support_account"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Trung tâm hỗ trợ"
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginTop="22dp"
+                        android:layout_toRightOf="@+id/ivSettingAccount" />
+
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_next_account"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="27dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlack">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_centerInParent="true"
+        android:elevation="4dp"
+        app:cardCornerRadius="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.joooonho.SelectableRoundedImageView
+                android:src="@mipmap/home_image"
+                android:id="@+id/imgItemHomeBestPlace"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="180dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgItemHomeBestPlace"
+                android:id="@+id/tvNamePlace"
+                android:text="Công viên Thống Nhất"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/smile_rating"
+                android:text="(123434))"
+                android:layout_below="@id/imgItemHomeBestPlace"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="75dp"/>
+
+            <com.hsalf.smileyrating.SmileyRating
+                android:id="@+id/smile_rating"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/imgItemHomeBestPlace"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="70dp" />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

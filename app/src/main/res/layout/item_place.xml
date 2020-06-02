@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="20dp"
+    android:layout_marginBottom="13dp"
+    android:layout_width="280dp"
+    android:layout_height="270dp"
+    android:layout_centerInParent="true"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvNamePlace"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgPlace"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"
+                android:text="Công viên Thống Nhất  nhất Công viên thống nhất" />
+
+            <TextView
+                android:id="@+id/tvNumberRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgPlace"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="70dp"
+                android:layout_toEndOf="@+id/ratingMark"
+                android:textColor="@color/colorBlack"
+                android:text="(123434))" />
+
+            <com.hsalf.smilerating.SmileRating
+                android:id="@+id/ratingMark"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:isIndicator="true"
+                android:layout_below="@id/imgPlace"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="65dp" />
+
+            <com.joooonho.SelectableRoundedImageView
+                android:id="@+id/imgPlace"
+                android:layout_width="match_parent"
+                android:layout_height="157dp"
+                android:scaleType="centerCrop" />
+
+            <Button
+                android:id="@+id/btnFavourite"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/imgPlace"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+</androidx.cardview.widget.CardView>

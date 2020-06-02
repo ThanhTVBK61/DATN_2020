@@ -1,0 +1,76 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+
+    defaultConfig {
+        applicationId "com.example.datn_2020"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility = 1.8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    //Material
+    implementation 'com.google.android.material:material:1.1.0'
+    //Glide: Image Library
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //Card view vs RecyclerView
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha03'
+    implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-rc01'
+
+    //smile rating
+    implementation 'com.github.sujithkanna:smileyrating:2.0.0'
+    //rounded image in card view
+    implementation 'com.joooonho:selectableroundedimageview:1.0.1'
+    //circleImageView
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:2.1.13"
+    // RxAndroid
+    implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
+
+    //Retrofit2
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.10.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    //you need this to use RxAndroid with retrofit.
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.8.1'
+    //live data view model
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.2.0'
+
+    //dot viewpager
+    implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
+}

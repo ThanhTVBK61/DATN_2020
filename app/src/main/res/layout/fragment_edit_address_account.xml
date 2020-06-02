@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.view_account.EditAddressAccountFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbEditAddressAccount"
+        android:background="@color/colorWhite"
+        app:title="Địa chỉ">
+        <TextView
+            android:id="@+id/tvSaveInformationAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            style="@style/textview_toolbar"
+            android:layout_marginLeft="235dp"
+            android:background="?attr/selectableItemBackground" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/rlEditNameInformation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tbEditAddressAccount"
+        android:background="@drawable/selector_edit_information"
+        android:backgroundTint="@color/colorGrayBound"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvEditNameAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textSize="@dimen/title_edit_size"
+            android:text="Tỉnh/Thành phố" />
+
+        <TextView
+            android:id="@+id/etEditNameInformation"
+            android:layout_below="@id/tvEditNameAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:text="Thành phố Hà Nội" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlEditDistrictAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlEditNameInformation"
+        android:background="@drawable/shape_edit_information"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvEditDistrictAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textSize="@dimen/title_edit_size"
+            android:text="Quận/Huyện"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvEditDistrictAddress"
+            android:text="Quận Đống Đa"
+            android:textColor="@color/colorBlack"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorGray"
+            android:src="@drawable/ic_expand"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlEditWardAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlEditDistrictAddress"
+        android:background="@drawable/shape_edit_information"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvEditWardAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textSize="@dimen/title_edit_size"
+            android:text="Phường/Xã"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvEditWardAddress"
+            android:text="Phường Phương Mai"
+            android:textColor="@color/colorBlack"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorGray"
+            android:src="@drawable/ic_expand"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlEditDetailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlEditWardAddress"
+        android:background="@drawable/shape_edit_information"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvEditDetailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Địa chỉ cụ thể"/>
+
+        <EditText
+            android:id="@+id/etEditDescriptionInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvEditDetailAddress"
+            android:text="Thích màu hồng và ghét sự giả dối"
+            android:textSize="14sp"
+            android:background="@null"
+            android:textColor="@color/colorBlack"/>
+
+        <ImageView
+            android:id="@+id/ivEditDetailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorGray"
+            android:src="@drawable/ic_clear"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

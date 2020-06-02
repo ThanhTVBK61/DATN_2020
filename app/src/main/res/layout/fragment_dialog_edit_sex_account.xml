@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:minWidth="300dp"
+    android:minHeight="250dp">
+        <TextView
+            android:id="@+id/tvSexTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="Giới tính"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"/>
+        <ImageView
+            android:id="@+id/ivCloseSexDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:backgroundTint="@color/colorBlue700"
+            android:src="@drawable/ic_clear_blue"/>
+        <RadioGroup
+            android:id="@+id/rgSelectSex"
+            android:layout_below="@id/tvSexTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
+            <RadioButton
+                android:id="@+id/rbMan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nam"/>
+            <RadioButton
+                android:id="@+id/rbWoman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Nữ"/>
+        </RadioGroup>
+
+    <TextView
+        android:id="@+id/tvNotificationSexAccount"
+        android:layout_below="@id/rgSelectSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="Chưa chọn giới tính *"
+        android:textColor="@color/colorRed"
+        android:textSize="16sp"
+        android:visibility="gone"/>
+    <TextView
+        android:id="@+id/tvSelectSex"
+        android:layout_below="@id/rgSelectSex"
+        style="@android:style/Widget.Button"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="Chọn"
+        android:textColor="@color/colorBlue700"
+        android:textSize="16sp" />
+</RelativeLayout>

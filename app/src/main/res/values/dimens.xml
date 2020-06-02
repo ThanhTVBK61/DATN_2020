@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="title_edit_size">11sp</dimen>
+    <dimen name="dialog_fragment_sex_width_size">300dp</dimen>
+    <dimen name="dialog_fragment_sex_height_size">250dp</dimen>
+</resources>
