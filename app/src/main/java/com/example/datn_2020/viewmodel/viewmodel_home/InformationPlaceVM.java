@@ -32,7 +32,7 @@ public class InformationPlaceVM extends ViewModel {
             public void handleResponseResult(PlaceDetailHomeResponse results) {
                 if(results.getSuccess())
                 {
-                    Log.i("Get Data Sever: ",results.toString());
+                    Log.i("Get Data Sever: ","Success");
                     placeDetailHomeModel.setValue(results.getListPlaceDetail().get(0));
                 }else if(!results.getSuccess()){
                     Log.i("Get Data Sever: ","isSuccess: false");

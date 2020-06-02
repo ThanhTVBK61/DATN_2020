@@ -59,6 +59,7 @@ public class MainHomeFragment extends Fragment implements View.OnClickListener {
 
         //View pager
         String[] urls = {
+                "http://10.0.2.2:3000/congvienthongnhat/cvtn1.jpg",
                 "https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "https://images.unsplash.com/photo-1544638627-725124bda50d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
                 "https://images.unsplash.com/photo-1544638635-8a5838b796c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",

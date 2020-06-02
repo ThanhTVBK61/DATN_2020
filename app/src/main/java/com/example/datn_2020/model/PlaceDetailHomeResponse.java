@@ -3,21 +3,18 @@ package com.example.datn_2020.model;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceDetailHomeResponse {
 
-    @SerializedName("Success")
+    @SerializedName("isSuccess")
     private Boolean success;
 
     @SerializedName("data")
-    private ArrayList<PlaceDetailHomeModel> listPlaceDetail;
+    private List<PlaceDetailHomeModel> listPlaceDetail;
 
     public PlaceDetailHomeResponse() {
-    }
-
-    public PlaceDetailHomeResponse(Boolean success, ArrayList<PlaceDetailHomeModel> listPlaceDetail) {
-        this.success = success;
-        this.listPlaceDetail = listPlaceDetail;
+        listPlaceDetail = new ArrayList<>();
     }
 
     public Boolean getSuccess() {
@@ -28,7 +25,7 @@ public class PlaceDetailHomeResponse {
         this.success = success;
     }
 
-    public ArrayList<PlaceDetailHomeModel> getListPlaceDetail() {
+    public List<PlaceDetailHomeModel> getListPlaceDetail() {
         return listPlaceDetail;
     }
 

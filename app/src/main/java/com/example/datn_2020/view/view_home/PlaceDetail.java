@@ -12,11 +12,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.ImageSliderAdapter;
+import com.example.datn_2020.model.PlaceDetailHomeModel;
 import com.example.datn_2020.network.DisposableManager;
+import com.example.datn_2020.viewmodel.viewmodel_home.InformationPlaceVM;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
@@ -27,6 +31,8 @@ public class PlaceDetail extends Fragment {
     private Toolbar toolbar;
     private ViewPager viewPager;
     private WormDotsIndicator wormDotsIndicator;
+    private String[] urls;
+    private InformationPlaceVM informationPlaceVM;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,17 +43,22 @@ public class PlaceDetail extends Fragment {
         registerCollapsingPlace(view);
         //Khởi tạo nút back cho toolbar
         registerBackToolbar();
-        //Khởi tạo viewpager
-        String[] urls = {
-                "https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                "https://images.unsplash.com/photo-1544638627-725124bda50d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                "https://images.unsplash.com/photo-1544638635-8a5838b796c6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                "https://images.unsplash.com/photo-1544633662-2b2afce79046?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-        };
-
-        registerViewPager(urls);
+        registerData();
 
         return view;
+    }
+
+    private void registerData() {
+        informationPlaceVM = new ViewModelProvider(getActivity()).get(InformationPlaceVM.class);
+        informationPlaceVM.loadInfoPlaceDetail();
+        informationPlaceVM.getInformationPlaceResponse().observe(getActivity(), new Observer<PlaceDetailHomeModel>() {
+            @Override
+            public void onChanged(PlaceDetailHomeModel placeDetailHomeModel) {
+                urls = placeDetailHomeModel.getListImageUrl().split(" ");
+                //Khởi tạo viewpager
+                registerViewPager(urls);
+            }
+        });
     }
 
     private void registerViewPager(String[] urls) {
