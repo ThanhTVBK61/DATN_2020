@@ -45,24 +45,23 @@
                 style="@style/linear_camera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:background="?attr/selectableItemBackground"
+                android:layout_gravity="right|bottom"
+                android:background="@drawable/shape_more_picture"
                 android:orientation="horizontal"
-                android:padding="10dp"
+                android:backgroundTintMode="src_atop"
                 app:layout_collapseMode="parallax">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginRight="7dp"
                     android:src="@drawable/ic_camera"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="120"
                     android:textColor="@color/colorGrayWhite"
-                    android:textSize="17sp"
-                    android:textStyle="bold"/>
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <androidx.appcompat.widget.Toolbar

@@ -8,7 +8,8 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -18,25 +19,19 @@
             app:title="Chuyến đi" />
 
         <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlTabsTrip"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_below="@+id/tbTripToolbar"
-            android:id="@+id/tlTripTabLayout"
-            app:tabMode="fixed"
-            app:tabGravity="center"
-            app:tabTextColor="@color/colorBlack">
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Danh sách chuyến đi"/>
-
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Xem gần đây"/>
-
-        </com.google.android.material.tabs.TabLayout>
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            app:tabGravity="fill"
+            app:tabIndicator="@drawable/shape_tab_indicator"
+            app:tabIndicatorColor="@color/colorRed"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="4dp"
+            app:tabSelectedTextColor="@color/colorBlack"
+            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

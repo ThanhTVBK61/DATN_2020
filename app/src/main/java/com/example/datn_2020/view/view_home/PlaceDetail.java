@@ -1,11 +1,9 @@
 package com.example.datn_2020.view.view_home;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,10 +16,15 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.ImageSliderAdapter;
+import com.example.datn_2020.adapter.home.PagerAdapter;
 import com.example.datn_2020.model.PlaceDetailHomeModel;
 import com.example.datn_2020.network.DisposableManager;
+import com.example.datn_2020.view.view_home.tabs_place_detail.MoreInformationFragment;
+import com.example.datn_2020.view.view_home.tabs_place_detail.OverviewFragment;
+import com.example.datn_2020.view.view_home.tabs_place_detail.ReviewFragment;
 import com.example.datn_2020.viewmodel.viewmodel_home.InformationPlaceVM;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.tabs.TabLayout;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.Objects;
@@ -33,6 +36,8 @@ public class PlaceDetail extends Fragment {
     private WormDotsIndicator wormDotsIndicator;
     private String[] urls;
     private InformationPlaceVM informationPlaceVM;
+    private TabLayout tabLayout;
+    private ViewPager viewPagerTabs;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,8 +49,19 @@ public class PlaceDetail extends Fragment {
         //Khởi tạo nút back cho toolbar
         registerBackToolbar();
         registerData();
+        registerTabs();
 
         return view;
+    }
+
+    private void registerTabs() {
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),1);
+        pagerAdapter.addNewTab(new OverviewFragment(),"Tổng quan");
+        pagerAdapter.addNewTab(new ReviewFragment(),"Đánh giá");
+        pagerAdapter.addNewTab(new MoreInformationFragment(),"Thông tin");
+        viewPagerTabs.setAdapter(pagerAdapter);
+
+        tabLayout.setupWithViewPager(viewPagerTabs);
     }
 
     private void registerData() {
@@ -83,6 +99,8 @@ public class PlaceDetail extends Fragment {
         toolbar = view.findViewById(R.id.placeDetailToolbar);
         viewPager = view.findViewById(R.id.placeDetailViewPager);
         wormDotsIndicator = view.findViewById(R.id.place_Detail_Worm_Dots_Indicator);
+        tabLayout = view.findViewById(R.id.tlTabsDetailPlace);
+        viewPagerTabs = view.findViewById(R.id.vpTabsDetailPlace);
     }
 
     private void registerCollapsingPlace(View view) {
