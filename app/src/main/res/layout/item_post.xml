@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:layout_marginTop="10dp"
+    android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/ivAccountPost"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_unknown_person" />
+
+    <TextView
+        android:id="@+id/tvNameAccountPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_toEndOf="@+id/ivAccountPost"
+        android:text="Phạm Văn Khải"
+        android:textColor="@color/colorBlack"/>
+
+    <RatingBar
+        android:id="@+id/rbRatingPost"
+        style="@style/RatingBarStarPost"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:isIndicator="true"
+        android:layout_below="@id/tvNameAccountPost"
+        android:layout_toEndOf="@+id/ivAccountPost"/>
+
+    <TextView
+        android:id="@+id/tvContentRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNameAccountPost"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@id/rbRatingPost"
+        android:text="4 Tốt"/>
+
+    <TextView
+        android:id="@+id/tvTimePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:text="07:34 23/04/2019"/>
+
+    <TextView
+        android:id="@+id/tvContentPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rbRatingPost"
+        android:layout_marginTop="20dp"
+        android:text="Clkjasdlfjasdfljadflajdfljasdlfjalsdf\nksdfkljlkadjfl"
+        android:textColor="@color/colorBlack" />
+
+    <RelativeLayout
+        android:id="@+id/rlInformationLikeComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvContentPost"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        android:focusable="true">
+        <ImageView
+            android:id="@+id/ivIconLikePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_like"/>
+
+        <TextView
+            android:id="@+id/tvNumberLikePost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/ivIconLikePost"
+            android:text="13"/>
+
+        <TextView
+            android:id="@+id/tvNumberCommentPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_toStartOf="@+id/tvContentComment"
+            android:layout_marginEnd="5dp"
+            android:text="400"/>
+
+        <TextView
+            android:id="@+id/tvContentComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentEnd="true"
+            android:text="bình luận"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/vPostLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/rlInformationLikeComment"
+        android:layout_marginTop="7dp"
+        android:background="@color/colorGray" />
+
+    <LinearLayout
+        android:id="@+id/llLikePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vPostLine"
+        android:layout_marginStart="30dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_like_border" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Thích"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/vPostLine"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/ic_comment" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="Bình luận"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvYourRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Đánh giá của bạn"
+        android:textColor="@color/colorBlack"
+        android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/tvScoreYourRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvYourRating"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:text="0.0"
+        android:textColor="@color/colorBlack"
+        android:textSize="30sp"/>
+
+    <TextView
+        android:id="@+id/tvYourServicePlaceDetail"
+        style="@style/ContentRating"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvYourRating"
+        android:layout_toEndOf="@+id/rbYourRatingService"
+        android:text="Dịch vụ"/>
+
+    <RatingBar
+        android:id="@+id/rbYourRatingService"
+        style="@style/RatingBarStarPost"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_below="@id/tvYourRating"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/tvScoreYourRating"
+        android:numStars="5" />
+
+    <TextView
+        android:id="@+id/tvYourQualityPlaceDetail"
+        style="@style/ContentRating"
+        android:layout_marginTop="3dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvYourServicePlaceDetail"
+        android:layout_toEndOf="@+id/rbYourRatingService"
+        android:text="Chất lượng"/>
+
+    <RatingBar
+        android:id="@+id/rbYourRatingQuality"
+        style="@style/RatingBarStarPost"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_below="@id/rbYourRatingService"
+        android:layout_toEndOf="@id/tvScoreYourRating"
+        android:numStars="5" />
+
+    <TextView
+        android:id="@+id/tvYourPricePlaceDetail"
+        style="@style/ContentRating"
+        android:layout_marginTop="3dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvYourQualityPlaceDetail"
+        android:layout_toEndOf="@+id/rbYourRatingService"
+        android:text="Giá cả"/>
+
+    <RatingBar
+        android:id="@+id/rbYourRatingPrice"
+        style="@style/RatingBarStarPost"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_below="@id/rbYourRatingQuality"
+        android:layout_toEndOf="@id/tvScoreYourRating"
+        android:numStars="5" />
+
+    <TextView
+        android:id="@+id/tvYourLocationPlaceDetail"
+        style="@style/ContentRating"
+        android:layout_marginTop="1dp"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvYourPricePlaceDetail"
+        android:layout_toEndOf="@+id/rbYourRatingService"
+        android:text="Vị trí"/>
+
+    <RatingBar
+        android:id="@+id/rbYourRatingLocation"
+        style="@style/RatingBarStarPost"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_below="@id/rbYourRatingPrice"
+        android:layout_toEndOf="@id/tvScoreYourRating"
+        android:numStars="5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListPost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rbYourRatingLocation"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorGrayBound"/>
+
+</RelativeLayout>

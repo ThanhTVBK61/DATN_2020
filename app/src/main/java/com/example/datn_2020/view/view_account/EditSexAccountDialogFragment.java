@@ -1,5 +1,6 @@
 package com.example.datn_2020.view.view_account;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class EditSexAccountDialogFragment extends DialogFragment implements Comp
     public void setSelectSexDialog(SelectSexDialogInterface selectSexDialog) {
         this.selectSexDialog = selectSexDialog;
     }
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -1,9 +1,12 @@
 package com.example.datn_2020.view.view_home;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,18 +22,21 @@ import com.example.datn_2020.adapter.ImageSliderAdapter;
 import com.example.datn_2020.adapter.home.PagerAdapter;
 import com.example.datn_2020.model.PlaceDetailHomeModel;
 import com.example.datn_2020.network.DisposableManager;
+import com.example.datn_2020.view.view_home.tabs_place_detail.ContactBottomSheet;
 import com.example.datn_2020.view.view_home.tabs_place_detail.MoreInformationFragment;
 import com.example.datn_2020.view.view_home.tabs_place_detail.OverviewFragment;
 import com.example.datn_2020.view.view_home.tabs_place_detail.ReviewFragment;
 import com.example.datn_2020.viewmodel.viewmodel_home.InformationPlaceVM;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.Objects;
 
-public class PlaceDetail extends Fragment {
+public class PlaceDetail extends Fragment implements View.OnClickListener {
 
+    private AppBarLayout placeDetailAppbar;
     private Toolbar toolbar;
     private ViewPager viewPager;
     private WormDotsIndicator wormDotsIndicator;
@@ -38,6 +44,8 @@ public class PlaceDetail extends Fragment {
     private InformationPlaceVM informationPlaceVM;
     private TabLayout tabLayout;
     private ViewPager viewPagerTabs;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
+    private LinearLayout llViewContact;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,14 +56,16 @@ public class PlaceDetail extends Fragment {
         registerCollapsingPlace(view);
         //Khởi tạo nút back cho toolbar
         registerBackToolbar();
-        registerData();
+        loadData();
         registerTabs();
+
+        llViewContact.setOnClickListener(this);
 
         return view;
     }
 
     private void registerTabs() {
-        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),1);
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),0);
         pagerAdapter.addNewTab(new OverviewFragment(),"Tổng quan");
         pagerAdapter.addNewTab(new ReviewFragment(),"Đánh giá");
         pagerAdapter.addNewTab(new MoreInformationFragment(),"Thông tin");
@@ -64,7 +74,7 @@ public class PlaceDetail extends Fragment {
         tabLayout.setupWithViewPager(viewPagerTabs);
     }
 
-    private void registerData() {
+    private void loadData() {
         informationPlaceVM = new ViewModelProvider(getActivity()).get(InformationPlaceVM.class);
         informationPlaceVM.loadInfoPlaceDetail();
         informationPlaceVM.getInformationPlaceResponse().observe(getActivity(), new Observer<PlaceDetailHomeModel>() {
@@ -83,7 +93,7 @@ public class PlaceDetail extends Fragment {
     }
 
     private void registerBackToolbar() {
-        toolbar.setNavigationIcon(R.drawable.ic_back_white);
+        toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,12 +111,49 @@ public class PlaceDetail extends Fragment {
         wormDotsIndicator = view.findViewById(R.id.place_Detail_Worm_Dots_Indicator);
         tabLayout = view.findViewById(R.id.tlTabsDetailPlace);
         viewPagerTabs = view.findViewById(R.id.vpTabsDetailPlace);
+        collapsingToolbarLayout = view.findViewById(R.id.placeDetailCollapsingToolbar);
+        llViewContact = view.findViewById(R.id.llContact);
+        placeDetailAppbar = view.findViewById(R.id.placeDetailAppbar);
     }
 
     private void registerCollapsingPlace(View view) {
-        CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.placeDetailCollapsingToolbar);
+        final CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.placeDetailCollapsingToolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar((Toolbar) view.findViewById(R.id.placeDetailToolbar));
-        collapsingToolbarLayout.setTitle(" ");
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(R.color.colorWhite));
+//        collapsingToolbarLayout.setTitle("Công viên thống nhất");
+//        collapsingToolbarLayout.setExpandedTitleMarginBottom(1100);
+//        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorBlack));
+//        collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#00FFFFFF"));
+
+        placeDetailAppbar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+
+            boolean isShow = true;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (Math.abs(verticalOffset) - scrollRange == 0) {
+                    collapsingToolbarLayout.setTitle("Title");
+                    collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.colorBlack));
+                    isShow = true;
+                } else if(isShow) {
+                    collapsingToolbarLayout.setTitle(" ");//careful there should a space between double quote otherwise it wont work
+                    isShow = false;
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.llContact:
+                Log.i("Linear","clicked");
+                ContactBottomSheet contactBottomSheet = new ContactBottomSheet();
+                contactBottomSheet.show(getChildFragmentManager(),"ContactBottomSheet");
+                break;
+        }
     }
 }

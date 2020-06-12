@@ -7,16 +7,17 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/placeDetailAppbar"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
+        android:elevation="8dp"
         android:background="@color/colorWhite"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/placeDetailCollapsingToolbar"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
-            app:contentScrim="@color/colorHomeToolbar"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/colorWhite"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <androidx.viewpager.widget.ViewPager
@@ -48,8 +49,8 @@
                 android:layout_marginTop="205dp"
                 android:background="@drawable/shape_more_picture"
                 android:orientation="horizontal"
-                android:backgroundTintMode="src_atop"
-                app:layout_collapseMode="parallax">
+                app:layout_collapseMode="parallax"
+                android:backgroundTintMode="src_atop">
 
                 <ImageView
                     android:layout_width="15dp"
@@ -69,12 +70,13 @@
                 android:layout_marginTop="240dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:layout_collapseMode="none"
                 android:padding="20dp">
                 <ImageView
                     android:id="@+id/ivStylePlaceDetail"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:src="@drawable/ic_parks"/>
                 <TextView
                     android:id="@+id/tvNamePlaceDetail"
@@ -86,6 +88,7 @@
                     android:textSize="24sp"
                     android:textStyle="bold" />
                 <TextView
+                    android:id="@+id/tvAddressPlaceDetail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvNamePlaceDetail"
@@ -93,14 +96,177 @@
                     android:text="354A Đường Lê Duẩn, Phương Liên, Đống Đa, Hà Nội"
                     android:textColor="@color/colorGray700"/>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_below="@+id/tvAddressPlaceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp"
+                    android:padding="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:cardCornerRadius="11dp"
+                    app:cardElevation="2dp"
+                    android:layout_alignParentEnd="true">
+
+                    <LinearLayout
+                        android:id="@+id/llContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:padding="10dp"
+                        android:focusable="true"
+                        android:background="@drawable/selector_contact">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_phone_contact"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:layout_marginStart="10dp"
+                            android:text="Liên hệ"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15sp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_below="@+id/tvAddressPlaceDetail"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/tvOpenPlaceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ĐANG MỞ CỬA"
+                    android:textColor="@color/colorGreen"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/tvTimePlaceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvOpenPlaceDetail"
+                    android:text="06:00 - 22:00"
+                    android:layout_marginBottom="20dp"
+                    android:textColor="@color/colorGray"/>
+
+                <TextView
+                    android:id="@+id/tvReviewPlaceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvTimePlaceDetail"
+                    android:text="Đánh giá chung"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tvScorePlaceDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@id/tvReviewPlaceDetail"
+                    android:text="5.0"
+                    android:textSize="60sp"
+                    android:textColor="@color/colorBlack"/>
+
+                <TextView
+                    android:id="@+id/tvServicePlaceDetail"
+                    style="@style/ContentRating"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvReviewPlaceDetail"
+                    android:layout_toEndOf="@+id/rbRatingService"
+                    android:text="Dịch vụ"/>
+
+                <RatingBar
+                    android:id="@+id/rbRatingService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="8dp"
+                    android:numStars="5"
+                    android:layout_toRightOf="@id/tvScorePlaceDetail"
+                    android:layout_below="@id/tvReviewPlaceDetail"
+                    style="@style/RatingBarStar" />
+
+                <TextView
+                    android:id="@+id/tvQualityPlaceDetail"
+                    style="@style/ContentRating"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvServicePlaceDetail"
+                    android:layout_toEndOf="@+id/rbRatingService"
+                    android:text="Chất lượng"/>
+
+                <RatingBar
+                    android:id="@+id/rbRatingQuality"
+                    style="@style/RatingBarStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_below="@id/rbRatingService"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/tvScorePlaceDetail"
+                    android:numStars="5" />
+
+                <TextView
+                    android:id="@+id/tvPricePlaceDetail"
+                    style="@style/ContentRating"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvQualityPlaceDetail"
+                    android:layout_toEndOf="@+id/rbRatingService"
+                    android:text="Giá cả"/>
+
+                <RatingBar
+                    android:id="@+id/rbRatingPrice"
+                    style="@style/RatingBarStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_below="@id/rbRatingQuality"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/tvScorePlaceDetail"
+                    android:numStars="5" />
+
+                <TextView
+                    android:id="@+id/tvLocationPlaceDetail"
+                    style="@style/ContentRating"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvPricePlaceDetail"
+                    android:layout_toEndOf="@+id/rbRatingService"
+                    android:text="Vị trí"/>
+
+                <RatingBar
+                    android:id="@+id/rbRatingLocation"
+                    style="@style/RatingBarStar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_below="@id/rbRatingPrice"
+                    android:layout_marginTop="4dp"
+                    android:layout_toRightOf="@id/tvScorePlaceDetail"
+                    android:numStars="5" />
+                <TextView
+                    android:id="@+id/tvSumReviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13123 lượt đánh giá"
+                    android:textColor="@color/colorGray"
+                    android:layout_below="@+id/rbRatingLocation"
+                    android:layout_marginTop="10dp"/>
+
             </RelativeLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/placeDetailToolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"/>
+                android:layout_height="50dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tlTabsDetailPlace"
                 android:layout_width="match_parent"
@@ -115,6 +281,7 @@
                 app:tabIndicatorHeight="4dp"
                 app:tabSelectedTextColor="@color/colorBlack"
                 app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"/>
+
 
     </com.google.android.material.appbar.AppBarLayout>
 

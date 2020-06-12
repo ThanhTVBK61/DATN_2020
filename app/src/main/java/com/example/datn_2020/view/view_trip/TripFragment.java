@@ -45,5 +45,4 @@ public class TripFragment extends Fragment{
         tabLayout.setupWithViewPager(viewPager);
     }
 
-
 }

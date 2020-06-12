@@ -3,11 +3,25 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
+<!--        <item name="android:windowBackground">@color/transparent</item>-->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">#80000000</item>
         <item name="colorAccent">@color/colorHomeToolbar</item>
-    </style>
 
+    </style>
+<!--    <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>-->
+<!--Bottom sheet-->
+<!--    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">-->
+<!--        <item name="bottomSheetStyle">@style/AppModalStyle</item>-->
+<!--    </style>-->
+
+<!--    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">-->
+<!--        <item name="android:background">@drawable/shape_view_below_viewpager</item>-->
+<!--        <item name="android:layout_marginLeft">10dp</item>-->
+<!--        <item name="android:layout_marginRight">10dp</item>-->
+<!--    </style>-->
+
+<!--    Navigation Bottom-->
     <style name="NavigationBottom">
         <item name="android:textSize">12sp</item>
     </style>
@@ -37,6 +51,44 @@
         <item name="android:paddingBottom">5dp</item>
         <item name="android:paddingLeft">7dp</item>
         <item name="android:paddingRight">7dp</item>
+    </style>
+    
+    <style name="RatingBarStar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/layer_list_rating_bar</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">0.5</item>
+    </style>
+
+    <style name="RatingBarStarPost" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/layer_list_rating_bar_post</item>
+        <item name="android:numStars">5</item>
+        <item name="android:stepSize">0.5</item>
+    </style>
+
+    <style name="ContentRating">
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+    </style>
+
+<!--    Animation Dialog Fragment-->
+    <style name="dialog_animation_slide" >
+        <item name="android:windowEnterAnimation">@anim/exit_right_to_left</item>
+        <item name="android:windowExitAnimation">@anim/enter_left_to_right</item>
+    </style>
+
+<!--    Bottom sheet-->
+    <style name="BottomSheet2" parent="Theme.AppCompat.Light">
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="BaseBottomSheetDialog2" parent="@style/Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheet2</item>
+    </style>
+
+    <style name="BottomSheet" parent="BaseBottomSheetDialog2" >
     </style>
 
 </resources>

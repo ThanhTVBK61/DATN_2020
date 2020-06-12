@@ -4,26 +4,23 @@ import com.google.gson.annotations.SerializedName;
 
 public class PlaceResponse {
 
-    @SerializedName("srcImage")
     private String srcImage;
-    @SerializedName("favourite")
     private int favourite;
-    @SerializedName("namePlace")
     private String namePlace;
-    @SerializedName("numberStar")
     private int numberStar;
-    @SerializedName("sumReview")
     private int sumReview;
+    private String address;
 
     public PlaceResponse() {
     }
 
-    public PlaceResponse(String srcImage, int favourite, String namePlace, int numberStar, int sumReview) {
+    public PlaceResponse(String srcImage, int favourite, String namePlace, int numberStar, int sumReview, String address) {
         this.srcImage = srcImage;
         this.favourite = favourite;
         this.namePlace = namePlace;
         this.numberStar = numberStar;
         this.sumReview = sumReview;
+        this.address = address;
     }
 
     public int getFavourite() {
@@ -64,5 +61,13 @@ public class PlaceResponse {
 
     public void setSumReview(int sumReview) {
         this.sumReview = sumReview;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

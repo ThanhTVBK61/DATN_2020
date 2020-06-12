@@ -6,6 +6,8 @@
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorGray">#9e9e9e</color>
+    <color name="colorGreen">#4caf50</color>
+    <color name="colorGreenA400">#00e676</color>
     <color name="colorGray700">#807D7D</color>
     <color name="colorGrayWhite">#F6F6F6</color>
     <color name="colorGrayBound">#e0e0e0</color>
@@ -16,4 +18,5 @@
     <color name="colorBlueLight">#0061ff</color>
     <color name="colorBoundImage">#7DD0F6</color>
     <color name="colorStar">#FCCE31</color>
+    <color name="transparent">#00000000</color>
 </resources>

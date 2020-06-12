@@ -25,7 +25,10 @@ public class HomeFragment extends Fragment {
     }
 
     void replaceHomeFragment(Fragment mFragment){
-        fragmentManager.beginTransaction().replace(R.id.flMainHome,mFragment).addToBackStack(null).commit();
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right,R.anim.exit_left_to_right)
+                .replace(R.id.flMainHome,mFragment).addToBackStack(null).commit();
     }
 
     void backHomeStack(){
