@@ -208,7 +208,7 @@ public class MainHomeFragment extends Fragment implements View.OnClickListener {
                     homeFragment.replaceHomeFragment(listPlacesFragment);
                     Objects.requireNonNull(getActivity()).findViewById(R.id.btnBottomNavigation).setVisibility(View.GONE);
                 }
-                break; 
+                break;
             case R.id.llMuseumPlaces:
                 if (homeFragment == null) {
                     Log.i("mainHomeFragment", "null");
@@ -216,6 +216,7 @@ public class MainHomeFragment extends Fragment implements View.OnClickListener {
                     ListPlacesFragment listPlacesFragment = new ListPlacesFragment();
                     Bundle bundle = new Bundle();
                     bundle.putString("title", "Danh sách bảo tàng");
+                    bundle.putString("type","Bảo tàng");
                     listPlacesFragment.setArguments(bundle);
                     homeFragment.replaceHomeFragment(listPlacesFragment);
                     Objects.requireNonNull(getActivity()).findViewById(R.id.btnBottomNavigation).setVisibility(View.GONE);

@@ -17,8 +17,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key"/>
 
-        <!--        <activity android:name=".view.container.ContainerActivity" />-->
-        <activity android:name=".view.container.ContainerActivity">
+        <activity android:name=".view.container.ContainerActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

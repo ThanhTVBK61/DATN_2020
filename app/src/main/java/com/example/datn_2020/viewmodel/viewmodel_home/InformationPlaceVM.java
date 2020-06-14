@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.datn_2020.model.PlaceDetailHomeModel;
 import com.example.datn_2020.model.PlaceDetailHomeResponse;
 import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.InformationPlaceDetailRequest;
+import com.example.datn_2020.network.home.InformationPlaceDetailRequest;
 
 public class InformationPlaceVM extends ViewModel {
     private MutableLiveData<PlaceDetailHomeModel> placeDetailHomeModel = new MutableLiveData<>();

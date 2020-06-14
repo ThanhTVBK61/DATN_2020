@@ -1,8 +1,12 @@
-package com.example.datn_2020.network;
+package com.example.datn_2020.network.home;
 
 import android.util.Log;
 
 import com.example.datn_2020.model.PlaceDetailHomeResponse;
+import com.example.datn_2020.network.ApiManager;
+import com.example.datn_2020.network.ApiService;
+import com.example.datn_2020.network.DisposableManager;
+import com.example.datn_2020.network.HandleResult;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -33,12 +37,12 @@ public class InformationPlaceDetailRequest {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.i("Call place api","Error connect to sever");
+                        Log.i("Call place api","Error connect to sever to get PlaceDetail");
                     }
 
                     @Override
                     public void onComplete() {
-                        Log.i("Call place api","Success");
+                        Log.i("Call place api","Success get PlaceDetail");
                     }
                 });
     }

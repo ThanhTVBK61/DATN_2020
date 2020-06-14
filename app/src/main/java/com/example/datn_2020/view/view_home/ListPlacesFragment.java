@@ -13,19 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.home.ListPlacesAdapter;
-import com.example.datn_2020.model.PlaceResponse;
+import com.example.datn_2020.model.ListPlaceModel;
+import com.example.datn_2020.viewmodel.viewmodel_home.ListPlaceVM;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class ListPlacesFragment extends Fragment implements View.OnClickListener {
+public class ListPlacesFragment extends Fragment implements View.OnClickListener, ListPlacesAdapter.ItemPlaceMapClickListener {
 
     private  final  String TAG = "ListPlaceFragment";
     private  final int ERROR_DIALOG_REQUEST = 9001;
@@ -33,21 +36,42 @@ public class ListPlacesFragment extends Fragment implements View.OnClickListener
     private Toolbar tbTitleListPlaces;
     private LinearLayout llFindMap;
     private RecyclerView rvListPlaces;
-    private ArrayList<PlaceResponse> placeResponseArrayList = new ArrayList<>();
+    private ArrayList<ListPlaceModel> placeResponseArrayList = new ArrayList<>();
     private ListPlacesAdapter listPlacesAdapter;
+    private String type;
+
+    private ListPlaceVM listPlaceVM;
+
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_places,container,false);
 
-        registerDataTest();
         registerViews(view);
         registerToolbar();
-        registerRecyclerView();
+        loadData();
+
 
         llFindMap.setOnClickListener(this);
 
         return view;
+    }
+
+    private void loadData() {
+        Bundle bundle = getArguments();
+        if(bundle!=null){
+            type = bundle.getString("type");
+        }
+
+        listPlaceVM = new ViewModelProvider(getActivity()).get(ListPlaceVM.class);
+        listPlaceVM.loadListPlace("123",type);
+        listPlaceVM.getListPlaceModelMutableLiveData().observe(getActivity(), new Observer<ArrayList<ListPlaceModel>>() {
+            @Override
+            public void onChanged(ArrayList<ListPlaceModel> listPlaceModels) {
+                placeResponseArrayList = listPlaceModels;
+                registerRecyclerView();
+            }
+        });
     }
 
     // Kiem tra dien thoai cua nguoi dung co ho tro google service
@@ -71,31 +95,6 @@ public class ListPlacesFragment extends Fragment implements View.OnClickListener
         return false;
     }
 
-    private void registerDataTest() {
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Công viên Thống Nhất  nhất Công viên thống nhất",1,923,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-        placeResponseArrayList.add(new PlaceResponse("https://images.unsplash.com/photo-1544614342-c48ab91d79fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                1,"Biển Nha Trang",4,92367,"101A Phương Mai Đống Đa Hà Nội"));
-    }
-
     private void registerToolbar() {
         Bundle bundle = getArguments();
         if(bundle != null){
@@ -117,7 +116,7 @@ public class ListPlacesFragment extends Fragment implements View.OnClickListener
     private void registerRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         rvListPlaces.setLayoutManager(linearLayoutManager);
-        listPlacesAdapter = new ListPlacesAdapter(getActivity(),placeResponseArrayList);
+        listPlacesAdapter = new ListPlacesAdapter(getActivity(),placeResponseArrayList,this);
         rvListPlaces.setAdapter(listPlacesAdapter);
     }
 
@@ -133,9 +132,19 @@ public class ListPlacesFragment extends Fragment implements View.OnClickListener
         switch (v.getId()){
             case R.id.llFindMap:
                 if(isServiceOK()){
-                    homeFragment.replaceHomeFragment(new MapsFragment());
+                    MapsFragment mMapsFragment = new MapsFragment();
+                    Bundle mBundle = new Bundle();
+                    mBundle.putString("type",type);
+                    mMapsFragment.setArguments(mBundle);
+                    homeFragment.replaceHomeFragment(mMapsFragment);
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(ListPlaceModel listPlaceModel) {
+        HomeFragment homeFragment = (HomeFragment) getParentFragment();
+        homeFragment.replaceHomeFragment(new PlaceDetail());
     }
 }

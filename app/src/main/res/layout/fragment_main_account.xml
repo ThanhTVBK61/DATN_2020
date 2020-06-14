@@ -7,9 +7,9 @@
     tools:context=".view.view_account.MainAccountFragment">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbToolbarAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tbToolbarAccount"
         android:background="@color/colorWhite"
         app:title="Tài khoản" />
 
@@ -32,9 +32,9 @@
                 <ImageView
                     android:layout_width="14dp"
                     android:layout_height="14dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="27dp"
+                    android:layout_marginEnd="27dp"
                     android:src="@drawable/ic_next_account" />
 
                 <TextView
@@ -42,7 +42,7 @@
                     android:layout_height="20dp"
                     android:layout_below="@id/tvNameAccount"
                     android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/civAccount"
+                    android:layout_toEndOf="@id/civAccount"
                     android:text="thslkdfld@gmail.com" />
 
                 <TextView
@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginTop="25dp"
-                    android:layout_toRightOf="@id/civAccount"
+                    android:layout_toEndOf="@id/civAccount"
                     android:text="TRẦN VĂN THÀNH"
                     android:textColor="@color/colorBlack"
                     android:textStyle="bold" />
@@ -88,16 +88,14 @@
                         android:layout_height="wrap_content"
                         android:text="Địa chỉ"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivAddressAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Đống Đa - Hà Nội"
                         android:layout_marginTop="22dp"
-                        android:layout_marginLeft="125dp"
-                        android:layout_toRightOf="@+id/ivAddressAccount" />
+                        android:layout_marginStart="125dp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -109,7 +107,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
                 <View
                     android:id="@+id/vLine0"
@@ -117,7 +115,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"
                     android:layout_marginTop="64dp"
-                    android:layout_marginLeft="63dp"/>
+                    android:layout_marginStart="63dp"/>
                 <!--         Địa điểm ưa thích-->
                 <LinearLayout
                     android:layout_below="@+id/vLine0"
@@ -135,8 +133,7 @@
                         android:layout_height="wrap_content"
                         android:text="Địa điểm ưa thích"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp"/>
 
                     <Space
                         android:layout_width="0dp"
@@ -148,7 +145,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
                 <View
                     android:id="@+id/vLine1"
@@ -156,7 +153,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"
                     android:layout_marginTop="129dp"
-                    android:layout_marginLeft="63dp"/>
+                    android:layout_marginStart="63dp"/>
                 <!--        List trip        -->
                 <LinearLayout
                     android:background="?android:attr/selectableItemBackground"
@@ -175,8 +172,7 @@
                         android:layout_height="wrap_content"
                         android:text="Danh sách chuyến đi"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -188,7 +184,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
                 <View
                     android:id="@+id/vLine2"
@@ -196,7 +192,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"
                     android:layout_marginTop="194dp"
-                    android:layout_marginLeft="63dp"/>
+                    android:layout_marginStart="63dp"/>
                 <!--        History        -->
                 <LinearLayout
                     android:layout_below="@+id/vLine2"
@@ -214,8 +210,7 @@
                         android:layout_height="wrap_content"
                         android:text="Lịch sử"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -227,7 +222,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -251,15 +246,14 @@
                         android:layout_height="wrap_content"
                         android:text="Cài đặt"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mật khẩu &amp; bảo mật"
                         android:layout_marginTop="22dp"
-                        android:layout_marginLeft="125dp"/>
+                        android:layout_marginStart="125dp"/>
 
                     <Space
                         android:layout_width="0dp"
@@ -271,7 +265,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -296,8 +290,7 @@
                         android:layout_height="wrap_content"
                         android:text="Câu hỏi thường gặp"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -309,7 +302,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
 
                 <View
@@ -318,7 +311,7 @@
                     android:layout_height="1dp"
                     android:background="@color/colorGray"
                     android:layout_marginTop="64dp"
-                    android:layout_marginLeft="63dp"/>
+                    android:layout_marginStart="63dp"/>
 
                 <LinearLayout
                     android:layout_below="@+id/vLine5"
@@ -336,8 +329,7 @@
                         android:layout_height="wrap_content"
                         android:text="Trung tâm hỗ trợ"
                         android:textColor="@color/colorBlack"
-                        android:layout_marginTop="22dp"
-                        android:layout_toRightOf="@+id/ivSettingAccount" />
+                        android:layout_marginTop="22dp" />
 
                     <Space
                         android:layout_width="0dp"
@@ -349,7 +341,7 @@
                         android:layout_height="14dp"
                         android:src="@drawable/ic_next_account"
                         android:layout_marginTop="25dp"
-                        android:layout_marginRight="27dp"/>
+                        android:layout_marginEnd="27dp"/>
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>

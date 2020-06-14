@@ -19,7 +19,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home,container,false);
 
         fragmentManager = getChildFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flMainHome,new MainHomeFragment()).addToBackStack(null).commit();
+        fragmentManager.beginTransaction().replace(R.id.flMainHome,new MainHomeFragment()).commit();
 
         return view;
     }

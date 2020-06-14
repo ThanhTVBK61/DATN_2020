@@ -12,11 +12,9 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.WindowManager;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.view.view_account.AccountFragment;
@@ -56,11 +54,11 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentAccount, "account").hide(fragmentAccount).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentNotification, "notification").hide(fragmentNotification).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentTrip, "trip").hide(fragmentTrip).commit();
-        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentHome, "home").commit();
+        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentHome, "com/example/datn_2020/network/home").commit();
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        getLocationPermission();
+//        getLocationPermission();
     }
 
     @Override
@@ -87,52 +85,52 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
         return true;
     }
 
-    private void getLocationPermission(){
-        Log.d(TAG,"getLocationPermission: getting location permissions");
-        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
-
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),COURSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                mLocationPermissionGranted = true;
-            }else {
-                ActivityCompat.requestPermissions(this,permissions, LOCATION_PERMISSION_REQUEST_CODE);
-            }
-        }else {
-            ActivityCompat.requestPermissions(this,permissions,LOCATION_PERMISSION_REQUEST_CODE);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        Log.d(TAG,"onRequestPermissionsResult: called.");
-        mLocationPermissionGranted = false;
-        if(requestCode == LOCATION_PERMISSION_REQUEST_CODE){
-
-            if(grantResults.length > 0) {
-                for (int grantResult : grantResults) {
-                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                        mLocationPermissionGranted = false;
-                        Log.d(TAG, "onRequestPermissionsResult: permission failed.");
-                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-                        alertDialogBuilder.setTitle("Thông báo");
-                        alertDialogBuilder.setMessage("Từ chối truy cập vị trí sẽ không xác định được các địa điểm quanh bạn");
-                        alertDialogBuilder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                finish();
-                            }
-                        });
-                        Dialog mDialog = alertDialogBuilder.create();
-                        mDialog.show();
-
-                        return;
-                    }
-                }
-                Log.d(TAG, "onRequestPermissionsResult: permission granted.");
-
-                mLocationPermissionGranted = true;
-            }
-        }
-    }
+//    private void getLocationPermission(){
+//        Log.d(TAG,"getLocationPermission: getting location permissions");
+//        String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION};
+//
+//        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
+//            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),COURSE_LOCATION)==PackageManager.PERMISSION_GRANTED){
+//                mLocationPermissionGranted = true;
+//            }else {
+//                ActivityCompat.requestPermissions(this,permissions, LOCATION_PERMISSION_REQUEST_CODE);
+//            }
+//        }else {
+//            ActivityCompat.requestPermissions(this,permissions,LOCATION_PERMISSION_REQUEST_CODE);
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        Log.d(TAG,"onRequestPermissionsResult: called.");
+//        mLocationPermissionGranted = false;
+//        if(requestCode == LOCATION_PERMISSION_REQUEST_CODE){
+//
+//            if(grantResults.length > 0) {
+//                for (int grantResult : grantResults) {
+//                    if (grantResult != PackageManager.PERMISSION_GRANTED) {
+//                        mLocationPermissionGranted = false;
+//                        Log.d(TAG, "onRequestPermissionsResult: permission failed.");
+//                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+//                        alertDialogBuilder.setTitle("Thông báo");
+//                        alertDialogBuilder.setMessage("Từ chối truy cập vị trí sẽ không xác định được các địa điểm quanh bạn");
+//                        alertDialogBuilder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        });
+//                        Dialog mDialog = alertDialogBuilder.create();
+//                        mDialog.show();
+//
+//                        return;
+//                    }
+//                }
+//                Log.d(TAG, "onRequestPermissionsResult: permission granted.");
+//
+//                mLocationPermissionGranted = true;
+//            }
+//        }
+//    }
 
 }

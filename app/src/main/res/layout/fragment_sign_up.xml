@@ -1,100 +1,272 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".view.login.SignUpFragment">
+    android:layout_marginLeft="30dp"
+    android:layout_marginTop="105dp"
+    android:layout_marginRight="30dp"
+    android:background="@drawable/shape_container_sign_up"
+    android:orientation="vertical"
+    android:paddingBottom="20dp">
 
-    <LinearLayout
-        android:id="@+id/llUsernameSignUp"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:background="@drawable/rounded_edittext_login"
-        android:orientation="horizontal">
-
-        <ImageView
+    <ImageView
+        android:id="@+id/ivBackSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="18dp"
-        android:src="@drawable/ic_user" />
+        android:layout_margin="15dp"
+        android:background="?attr/selectableItemBackground"
+        android:padding="5dp"
+        android:src="@drawable/ic_back_white"/>
+
+    <RelativeLayout
+        android:id="@+id/llUsernameSignUp"
+        android:layout_below="@+id/ivBackSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_edit_information"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvUsernameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Tên đăng nhập" />
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:hint="Username" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llEmailSignUp"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/llUsernameSignUp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_edittext_login"
-        android:orientation="horizontal">
+            android:layout_below="@+id/tvUsernameTitle"
+            android:hint="Nhập tên đăng nhập"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"
+            android:background="@null"
+            android:textColor="@color/colorBlack"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="18dp"
-            android:src="@drawable/ic_email_signup" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_user_outline"
+            android:tint="@color/colorGray"/>
 
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
-            android:inputType="textEmailAddress"
-            android:hint="Email" />
+    </RelativeLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/llPasswordSignUp"
-        android:layout_width="270dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/llEmailSignUp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/rounded_edittext_login"
-        android:orientation="horizontal">
+        android:layout_below="@+id/llUsernameSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_edit_information"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvPasswordTitleSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Mật khẩu" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPasswordTitleSignUp"
+            android:background="@null"
+            android:hint="Nhập mật khẩu"
+            android:inputType="textPassword"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"/>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="18dp"
-            android:src="@drawable/ic_password" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_password_outline"
+            android:tint="@color/colorGray"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llEmailSignUp"
+        android:layout_below="@+id/llPasswordSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_edit_information"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvEmailTitleSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Email" />
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:background="@android:color/transparent"
+            android:layout_below="@+id/tvEmailTitleSignUp"
+            android:background="@null"
+            android:hint="Nhập địa chỉ email"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_mail_outline"
+            android:tint="@color/colorGray"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llAddressSignUp"
+        android:layout_below="@+id/llEmailSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_edit_information"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvAddressTitleSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Địa chỉ" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddressTitleSignUp"
+            android:background="@null"
+            android:hint="Nhập địa chỉ"
             android:inputType="textPassword"
-            android:hint="Password" />
-    </LinearLayout>
+            android:textColor="@color/colorBlack"
+            android:textColorHint="@color/colorGray"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_location_edit_outline"
+            android:tint="@color/colorGray"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llBirthdaySignUp"
+        android:layout_below="@+id/llAddressSignUp"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_information"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvBirthdayTitleSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Ngày sinh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvBirthdayTitleSignUp"
+            android:text="..."
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_expand"
+            android:tint="@color/colorGray"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/llSexSignUp"
+        android:layout_below="@+id/llAddressSignUp"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/shape_edit_information"
+        android:paddingStart="20dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/tvSexTitleSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:text="Giới tính" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvSexTitleSignUp"
+            android:text="..."
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_expand"
+            android:tint="@color/colorGray"/>
+    </RelativeLayout>
 
     <Button
-        android:id="@+id/btnSignUp"
+        android:id="@+id/btnLogin"
+        android:layout_below="@+id/llBirthdaySignUp"
         android:layout_width="270dp"
         android:layout_height="50dp"
-        android:layout_below="@+id/llPasswordSignUp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="40dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rounded_buttonlogin"
-        android:orientation="horizontal"
-        android:text="Sign up"
+        android:text="ĐĂNG KÝ"
         android:textColor="@color/colorWhite" />
 
 </RelativeLayout>
