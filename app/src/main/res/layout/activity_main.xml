@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_background_login"
-    tools:context=".MainActivity">
+    tools:context=".view.login.LoginActivity">
 
     <FrameLayout
         android:id="@+id/flLoginSignUp"

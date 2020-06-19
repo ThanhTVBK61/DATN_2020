@@ -1,26 +1,19 @@
 package com.example.datn_2020.view.container;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.Manifest;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.view.view_account.AccountFragment;
-import com.example.datn_2020.view.view_home.HomeFragment;
-import com.example.datn_2020.view.view_notification.NotificationFragment;
-import com.example.datn_2020.view.view_trip.TripFragment;
+import com.example.datn_2020.view.account.AccountFragment;
+import com.example.datn_2020.view.home.HomeFragment;
+import com.example.datn_2020.view.notification.NotificationFragment;
+import com.example.datn_2020.view.trip.TripFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ContainerActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -51,10 +44,10 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
 //                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        }
 
-        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentAccount, "account").hide(fragmentAccount).commit();
+        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentAccount, "com/example/datn_2020/network/account").hide(fragmentAccount).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentNotification, "notification").hide(fragmentNotification).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentTrip, "trip").hide(fragmentTrip).commit();
-        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentHome, "com/example/datn_2020/network/home").commit();
+        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentHome, "home").show(fragmentHome).commit();
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

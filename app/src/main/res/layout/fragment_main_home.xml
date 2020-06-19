@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.view_home.MainHomeFragment">
+    tools:context=".view.home.MainHomeFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/homeAppbar"
@@ -422,6 +422,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Được đề xuất cho bạn"/>
+
+                <ImageView
+                    android:id="@+id/ivIconGoogleMaps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvDexuat"
+                    android:layout_marginLeft="70dp"
+                    android:src="@drawable/ic_user"/>
+
                 <TextView
                     android:id="@+id/tvDiemDuLichHangDau"
                     android:layout_below="@+id/tvDexuat"

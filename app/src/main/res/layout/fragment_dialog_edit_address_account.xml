@@ -5,7 +5,7 @@
     android:layout_marginTop="70dp"
     android:background="@drawable/shape_edit_dialogfragment"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".view.view_account.EditAddressAccountDialogFragment">
+    tools:context=".view.account.EditAddressAccountDialogFragment">
 
 
 

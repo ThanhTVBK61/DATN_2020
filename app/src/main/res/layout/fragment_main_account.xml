@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.view_account.MainAccountFragment">
+    tools:context=".view.account.MainAccountFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbToolbarAccount"
@@ -227,6 +227,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rlSetting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

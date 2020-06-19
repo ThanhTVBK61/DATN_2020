@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_bottom_sheet_othertype">
+
+    <TextView
+        android:id="@+id/tvTitleOtherPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Các loại khác"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:layout_marginStart="20dp"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvStadiumOtherPlace"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/tvTitleOtherPlace"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Sân vân động"-->
+<!--        android:padding="5dp"-->
+<!--        android:textColor="@color/colorBlack"-->
+<!--        android:textSize="16sp" />-->
+
+    <TextView
+        android:id="@+id/tvStadiumOtherPlace"
+        android:layout_below="@+id/tvTitleOtherPlace"
+        android:text="Sân vận động"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        style="@style/textview_othertype"
+        android:background="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/tvHospitalOtherPlace"
+        android:layout_below="@+id/tvStadiumOtherPlace"
+        android:text="Bệnh viện"
+        android:gravity="start"
+        style="@style/textview_othertype"
+        android:background="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/tvCoffeeOtherPlace"
+        android:layout_below="@+id/tvHospitalOtherPlace"
+        android:text="Quán cà phê"
+        android:gravity="start"
+        style="@style/textview_othertype"
+        android:background="?attr/selectableItemBackground" />
+
+    <TextView
+        android:id="@+id/tvAllPlace"
+        android:layout_below="@+id/tvCoffeeOtherPlace"
+        android:text="Tất cả"
+        android:gravity="start"
+        style="@style/textview_othertype"
+        android:background="?attr/selectableItemBackground" />
+
+</RelativeLayout>

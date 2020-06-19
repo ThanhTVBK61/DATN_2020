@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbSetting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:title="Cài đặt"/>
+
+    <RelativeLayout
+        android:id="@+id/rlChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbSetting"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorWhite">
+        <!--        Địa chỉ    -->
+        <LinearLayout
+            android:id="@+id/llChangePasswordSetting"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/ic_password"
+                android:tint="@color/colorGray"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đổi mật khẩu"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="22dp" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_next_account"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="27dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llLogout"
+        android:layout_below="@+id/rlChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:orientation="horizontal"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="10dp">
+        <ImageView
+            android:id="@+id/ivAddressAccount"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_margin="20dp"
+            android:src="@drawable/ic_logout"
+            android:tint="@color/colorGray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đăng xuất"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="22dp" />
+    </LinearLayout>
+</RelativeLayout>

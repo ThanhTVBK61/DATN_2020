@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.view_trip.SeenTripTabLayoutFragment">
+    tools:context=".view.trip.SeenTripTabLayoutFragment">
     <ImageView
         android:src="@drawable/selector_star"
         android:layout_width="match_parent"

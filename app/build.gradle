@@ -60,7 +60,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:2.0.2"
 
     //Retrofit2
-    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.10.0'
+    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.14.7'
     implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
@@ -77,4 +77,12 @@ dependencies {
     //Google play services
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    //stetho
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+
+    //Room components
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }

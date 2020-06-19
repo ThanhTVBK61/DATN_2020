@@ -4,6 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/flAccount"
-    tools:context=".view.view_account.AccountFragment" >
+    tools:context=".view.account.AccountFragment" >
 </FrameLayout>
 

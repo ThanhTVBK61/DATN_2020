@@ -7,9 +7,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">#80000000</item>
         <item name="colorAccent">@color/colorHomeToolbar</item>
-
+<!--        <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>-->
     </style>
-<!--    <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>-->
+
 <!--Bottom sheet-->
 <!--    <style name="AppBottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">-->
 <!--        <item name="bottomSheetStyle">@style/AppModalStyle</item>-->
@@ -17,8 +17,6 @@
 
 <!--    <style name="AppModalStyle" parent="Widget.Design.BottomSheet.Modal">-->
 <!--        <item name="android:background">@drawable/shape_view_below_viewpager</item>-->
-<!--        <item name="android:layout_marginLeft">10dp</item>-->
-<!--        <item name="android:layout_marginRight">10dp</item>-->
 <!--    </style>-->
 
 <!--    Navigation Bottom-->
@@ -89,6 +87,18 @@
     </style>
 
     <style name="BottomSheet" parent="BaseBottomSheetDialog2" >
+    </style>
+<!--HOME-->
+    <!--    Item in other place type-->
+    <style name="textview_othertype" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/colorBlue700</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingLeft">50dp</item>
+        <item name="android:textSize">17sp</item>
     </style>
 
 </resources>

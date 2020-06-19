@@ -29,7 +29,7 @@
         android:focusable="true">
 
         <TextView
-            android:id="@+id/tvEditNameInformation"
+            android:id="@+id/tvTitleEditNameInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
@@ -40,14 +40,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/tvEditNameInformation"
+            android:layout_toEndOf="@id/tvTitleEditNameInformation"
             android:text="Bạn chưa nhập tên *"
             android:textColor="@color/colorRed"
             android:visibility="gone"/>
 
         <EditText
             android:id="@+id/etEditNameInformation"
-            android:layout_below="@id/tvEditNameInformation"
+            android:layout_below="@id/tvTitleEditNameInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
