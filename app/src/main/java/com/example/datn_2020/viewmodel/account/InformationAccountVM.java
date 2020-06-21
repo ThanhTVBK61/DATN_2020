@@ -5,10 +5,10 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.datn_2020.model.InformationAccountModel;
-import com.example.datn_2020.model.InformationAccountResponse;
-import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.InformationAccountRequest;
+import com.example.datn_2020.repository.model.InformationAccountModel;
+import com.example.datn_2020.repository.model.InformationAccountResponse;
+import com.example.datn_2020.repository.network.HandleResult;
+import com.example.datn_2020.repository.network.InformationAccountRequest;
 
 public class InformationAccountVM extends ViewModel {
     private MutableLiveData<InformationAccountModel> infoAccountResponse = new MutableLiveData<>();

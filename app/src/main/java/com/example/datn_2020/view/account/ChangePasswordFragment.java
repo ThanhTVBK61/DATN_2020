@@ -2,7 +2,6 @@ package com.example.datn_2020.view.account;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +25,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.ChangePasswordModel;
+import com.example.datn_2020.repository.model.ChangePasswordModel;
 import com.example.datn_2020.view.login.LoginActivity;
 import com.example.datn_2020.viewmodel.account.SettingVM;
 

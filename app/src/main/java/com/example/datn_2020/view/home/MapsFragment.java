@@ -1,9 +1,13 @@
 package com.example.datn_2020.view.home;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +29,7 @@ import androidx.recyclerview.widget.SnapHelper;
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.home.ListPlacesAdapter;
 import com.example.datn_2020.adapter.home.StartSnapHelper;
-import com.example.datn_2020.model.ListPlaceModel;
+import com.example.datn_2020.repository.model.ListPlaceModel;
 import com.example.datn_2020.viewmodel.home.ListPlaceVM;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -33,17 +37,17 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPlacesAdapter.ItemPlaceMapClickListener {
+public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPlacesAdapter.ItemPlaceMapClickListener, View.OnClickListener {
 
     private final String TAG = "ListPlacesFragment";
     private final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
@@ -53,6 +57,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
 
     private Boolean mLocationPermissionGranted = false;
 
+    private String currentCoordinate;
+
     private ListPlaceVM listPlaceVM;
     private ArrayList<ListPlaceModel> listPlace = new ArrayList<>();
     private ListPlacesAdapter listPlacesAdapter;
@@ -61,6 +67,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
     private Toolbar tbListPlaceMap;
     private GoogleMap mMap;
     private String typePlace;
+    private FloatingActionButton fabNavigation;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -74,11 +81,14 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
             @Override
             public void onChanged(ArrayList<ListPlaceModel> listPlaceModels) {
                 listPlace = listPlaceModels;
+                String[] coordinate = listPlace.get(0).getCoordinatePlace().split(" ");
+                currentCoordinate = coordinate[0]+","+coordinate[1]+"("+listPlace.get(0).getNamePlace()+")";
             }
         });
 
         getLocationPermission();
         registerRecyclerView();
+        fabNavigation.setOnClickListener(this);
 
         return view;
     }
@@ -114,6 +124,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
     private void registerViews(View view) {
         rvListPlacesMap = view.findViewById(R.id.rvListPlacesMap);
         tbListPlaceMap = view.findViewById(R.id.tbListPlaceMap);
+        fabNavigation = view.findViewById(R.id.fabNavigation);
     }
 
     private void getLocationPermission() {
@@ -164,6 +175,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
                 for (int pos = 0; pos < listPlace.size(); pos++) {
                     if(listPlace.get(pos).getNamePlace().equals(namePlace)){
                         rvListPlacesMap.smoothScrollToPosition(pos);
+                        String[] coordinate = listPlace.get(pos).getCoordinatePlace().split(" ");
+                        currentCoordinate = coordinate[0]+","+coordinate[1]+"("+listPlace.get(pos).getNamePlace()+")";
                         break;
                     }
                 }
@@ -239,5 +252,33 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
     public void onItemClick(ListPlaceModel listPlaceModel) {
         HomeFragment homeFragment = (HomeFragment) getParentFragment();
         homeFragment.replaceHomeFragment(new PlaceDetail());
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fabNavigation:
+//                Uri gmmIntentUri = Uri.parse("google.navigation:q="+currentCoordinate);
+//                Uri gmmIntentUri = Uri.parse("geo:0,0?q=1,Đại Cồ Việt, Hai Bà Trưng, Hà Nội");
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+currentCoordinate);
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                    startActivity(mapIntent);
+                }else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                    alertDialogBuilder.setTitle("Thông báo");
+                    alertDialogBuilder.setMessage("Điện thoại không hỗ trợ tìm đường");
+                    alertDialogBuilder.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(R.color.colorBlue700));
+                }
+                break;
+        }
     }
 }

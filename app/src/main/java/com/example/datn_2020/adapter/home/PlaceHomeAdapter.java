@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.PlaceResponse;
+import com.example.datn_2020.repository.model.PlaceResponse;
 import com.joooonho.SelectableRoundedImageView;
 
 import java.util.ArrayList;

@@ -5,10 +5,10 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.datn_2020.model.ListPlaceModel;
-import com.example.datn_2020.model.ListPlaceResponse;
-import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.home.ListPlaceRequest;
+import com.example.datn_2020.repository.model.ListPlaceModel;
+import com.example.datn_2020.repository.model.ListPlaceResponse;
+import com.example.datn_2020.repository.network.HandleResult;
+import com.example.datn_2020.repository.network.home.ListPlaceRequest;
 
 import java.util.ArrayList;
 

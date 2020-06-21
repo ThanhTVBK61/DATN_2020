@@ -13,7 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.PlaceDetailHomeModel;
+import com.example.datn_2020.repository.model.PlaceDetailHomeModel;
 import com.example.datn_2020.viewmodel.home.InformationPlaceVM;
 
 public class OverviewFragment extends Fragment {

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.home.PostAdapter;
-import com.example.datn_2020.model.PostResponse;
+import com.example.datn_2020.repository.model.PostResponse;
 
 import java.util.ArrayList;
 

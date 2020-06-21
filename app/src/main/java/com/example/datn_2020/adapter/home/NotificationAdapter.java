@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.NotificationModel;
+import com.example.datn_2020.repository.model.NotificationModel;
 
 import java.util.ArrayList;
 

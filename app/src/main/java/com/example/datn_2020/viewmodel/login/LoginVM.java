@@ -6,12 +6,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.datn_2020.model.LoginModel;
-import com.example.datn_2020.model.LoginResponse;
-import com.example.datn_2020.model.db.Db;
-import com.example.datn_2020.model.entity.User;
-import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.login.LoginCallApi;
+import com.example.datn_2020.repository.model.LoginModel;
+import com.example.datn_2020.repository.model.LoginResponse;
+import com.example.datn_2020.repository.room.db.Db;
+import com.example.datn_2020.repository.room.entity.User;
+import com.example.datn_2020.repository.network.HandleResult;
+import com.example.datn_2020.repository.network.login.LoginCallApi;
 
 public class LoginVM extends ViewModel {
     private LiveData<User> userData;

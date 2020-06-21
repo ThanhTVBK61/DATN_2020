@@ -1,12 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitleMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liên hệ với chúng tôi"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"/>
+
+    <ImageView
+        android:id="@+id/ivContactMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitleMoreInformation"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="13dp"
+        android:src="@drawable/ic_contact"
+        android:tint="@color/colorGreen"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:text="More Information"/>
+        android:layout_below="@+id/tvTitleMoreInformation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="Điện thoại"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:id="@+id/tvPhoneMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvTitleMoreInformation"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="0356896394"
+        android:textColor="@color/colorBlack"/>
+
+    <ImageView
+        android:id="@+id/ivMailMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivContactMoreInformation"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_mail"
+        android:tint="@color/colorRed"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivContactMoreInformation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="Email"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:id="@+id/tvMailMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivContactMoreInformation"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="tranphung@gmail.com"
+        android:textColor="@color/colorBlack"/>
+
+    <ImageView
+        android:id="@+id/ivLocationMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivMailMoreInformation"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_location_account"
+        android:tint="@color/colorBlue700"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivMailMoreInformation"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="Địa chỉ"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:id="@+id/tvLocationMoreInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivMailMoreInformation"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@+id/ivContactMoreInformation"
+        android:text="97 Phương Mai Đống Đa Hà Nội"
+        android:textColor="@color/colorBlack"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/ivLocationMoreInformation"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp">
+        <fragment
+            android:id="@+id/fMapMoreInformation"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"/>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

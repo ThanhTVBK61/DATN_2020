@@ -20,7 +20,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.InformationAccountModel;
+import com.example.datn_2020.repository.model.InformationAccountModel;
 import com.example.datn_2020.viewmodel.account.InformationAccountVM;
 
 public class EditInformationAccountFragment extends Fragment implements View.OnClickListener, EditSexAccountDialogFragment.SelectSexDialogInterface, View.OnFocusChangeListener {

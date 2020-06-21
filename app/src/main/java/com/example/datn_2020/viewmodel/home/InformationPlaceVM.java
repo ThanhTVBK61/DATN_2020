@@ -5,10 +5,10 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.datn_2020.model.PlaceDetailHomeModel;
-import com.example.datn_2020.model.PlaceDetailHomeResponse;
-import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.home.InformationPlaceDetailRequest;
+import com.example.datn_2020.repository.model.PlaceDetailHomeModel;
+import com.example.datn_2020.repository.model.PlaceDetailHomeResponse;
+import com.example.datn_2020.repository.network.HandleResult;
+import com.example.datn_2020.repository.network.home.InformationPlaceDetailRequest;
 
 public class InformationPlaceVM extends ViewModel {
     private MutableLiveData<PlaceDetailHomeModel> placeDetailHomeModel = new MutableLiveData<>();

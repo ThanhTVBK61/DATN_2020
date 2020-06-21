@@ -18,7 +18,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.SignUpModel;
+import com.example.datn_2020.repository.model.SignUpModel;
 import com.example.datn_2020.view.account.EditSexAccountDialogFragment;
 import com.example.datn_2020.viewmodel.login.SignUpVM;
 

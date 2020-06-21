@@ -44,7 +44,7 @@ public class ContainerActivity extends AppCompatActivity implements BottomNaviga
 //                    WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 //        }
 
-        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentAccount, "com/example/datn_2020/network/account").hide(fragmentAccount).commit();
+        fragmentManager.beginTransaction().add(R.id.flContainer, fragmentAccount, "com/example/datn_2020/repository/network/account").hide(fragmentAccount).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentNotification, "notification").hide(fragmentNotification).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentTrip, "trip").hide(fragmentTrip).commit();
         fragmentManager.beginTransaction().add(R.id.flContainer, fragmentHome, "home").show(fragmentHome).commit();

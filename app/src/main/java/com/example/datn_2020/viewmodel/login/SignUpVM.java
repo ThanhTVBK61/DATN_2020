@@ -5,9 +5,9 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.datn_2020.model.SignUpModel;
-import com.example.datn_2020.network.HandleResult;
-import com.example.datn_2020.network.login.SignUpCallApi;
+import com.example.datn_2020.repository.model.SignUpModel;
+import com.example.datn_2020.repository.network.HandleResult;
+import com.example.datn_2020.repository.network.login.SignUpCallApi;
 
 public class SignUpVM extends ViewModel {
     private MutableLiveData<Boolean> mCheckSignUp = new MutableLiveData<>();

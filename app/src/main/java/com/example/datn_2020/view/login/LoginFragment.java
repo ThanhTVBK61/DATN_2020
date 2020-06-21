@@ -18,9 +18,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.LoginDataResponse;
-import com.example.datn_2020.model.LoginModel;
-import com.example.datn_2020.model.LoginResponse;
+import com.example.datn_2020.repository.model.LoginDataResponse;
+import com.example.datn_2020.repository.model.LoginModel;
+import com.example.datn_2020.repository.model.LoginResponse;
 import com.example.datn_2020.view.container.ContainerActivity;
 import com.example.datn_2020.viewmodel.login.LoginVM;
 

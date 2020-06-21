@@ -1,12 +1,10 @@
 package com.example.datn_2020.adapter.home;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -15,9 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.ListPlaceModel;
-import com.example.datn_2020.model.ListPlaceResponse;
-import com.example.datn_2020.model.PlaceResponse;
+import com.example.datn_2020.repository.model.ListPlaceModel;
 import com.joooonho.SelectableRoundedImageView;
 
 import java.util.ArrayList;
@@ -114,6 +110,8 @@ public class ListPlacesAdapter extends RecyclerView.Adapter<ListPlacesViewHolder
     public int getItemCount() {
         return item_placeArrayList.size();
     }
+
+
 
     public interface ItemPlaceMapClickListener{
         void onItemClick(ListPlaceModel listPlaceModel);

@@ -1,17 +1,11 @@
 package com.example.datn_2020.view.home;
 
 import android.Manifest;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +23,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,13 +30,12 @@ import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.ImageSliderAdapter;
 import com.example.datn_2020.adapter.home.PlaceHomeAdapter;
 import com.example.datn_2020.adapter.home.StartSnapHelper;
-import com.example.datn_2020.model.PlaceResponse;
+import com.example.datn_2020.repository.model.PlaceResponse;
 import com.example.datn_2020.view.home.tabs_place_detail.OtherTypeBottomSheetDialog;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -93,28 +85,25 @@ public class MainHomeFragment extends Fragment implements View.OnClickListener {
 //
 //            }
 //        }
-        ImageView imageView = view.findViewById(R.id.ivIconGoogleMaps);
-        try {
-            Drawable icon = getContext().getPackageManager().getApplicationIcon("com.google.android.apps.maps");
-            imageView.setImageDrawable(icon);
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.i("Installed app","get icon error :"+ e.getMessage());
-            e.printStackTrace();
-        }
+//        ImageView imageView = view.findViewById(R.id.ivIconGoogleMaps);
+//        try {
+//            Drawable icon = getContext().getPackageManager().getApplicationIcon("com.google.android.apps.maps");
+//            imageView.setImageDrawable(icon);
+//        } catch (PackageManager.NameNotFoundException e) {
+//            Log.i("Installed app","get icon error :"+ e.getMessage());
+//            e.printStackTrace();
+//        }
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Uri gmmIntentUri = Uri.parse("google.navigation:q=21.004792, 105.845290");
-//                Uri gmmIntentUri = Uri.parse("geo:0,0?q=1,Đại Cồ Việt, Hai Bà Trưng, Hà Nội");
-//                Uri gmmIntentUri = Uri.parse("geo:0,0?q=21.004792, 105.845290(Đại học bách khoa)");
-                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                mapIntent.setPackage("com.google.android.apps.maps");
-                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-                    startActivity(mapIntent);
-                }
-            }
-        });
+
+//                Uri gmmIntentUri = Uri.parse("google.navigation:q=21.004792, 105.845290");
+////                Uri gmmIntentUri = Uri.parse("geo:0,0?q=1,Đại Cồ Việt, Hai Bà Trưng, Hà Nội");
+////                Uri gmmIntentUri = Uri.parse("geo:0,0?q=21.004792, 105.845290(Đại học bách khoa)");
+//                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//                mapIntent.setPackage("com.google.android.apps.maps");
+//                if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+//                    startActivity(mapIntent);
+//                }
+
 
 
         //View pager

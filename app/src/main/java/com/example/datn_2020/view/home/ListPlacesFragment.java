@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.home.ListPlacesAdapter;
-import com.example.datn_2020.model.ListPlaceModel;
+import com.example.datn_2020.repository.model.ListPlaceModel;
 import com.example.datn_2020.viewmodel.home.ListPlaceVM;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;

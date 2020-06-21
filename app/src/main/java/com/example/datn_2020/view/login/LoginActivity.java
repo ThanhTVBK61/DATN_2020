@@ -11,8 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.datn_2020.R;
-import com.example.datn_2020.model.entity.User;
-import com.example.datn_2020.network.DisposableManager;
+import com.example.datn_2020.repository.room.entity.User;
+import com.example.datn_2020.repository.network.DisposableManager;
 import com.example.datn_2020.view.container.ContainerActivity;
 import com.example.datn_2020.viewmodel.login.LoginVM;
 
