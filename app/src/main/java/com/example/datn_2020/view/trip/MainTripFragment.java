@@ -37,9 +37,9 @@ public class TripFragment extends Fragment{
     }
 
     private void registerTabs(){
-        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),1);
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),0);
         pagerAdapter.addNewTab(new TripTabLayoutFragment(),"Danh sách chuyến đi");
-        pagerAdapter.addNewTab(new SeenTripTabLayoutFragment(),"Địa điểm đã xem");
+        pagerAdapter.addNewTab(new FavouriteTripTabLayoutFragment(),"Địa điểm ưa thích");
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);
