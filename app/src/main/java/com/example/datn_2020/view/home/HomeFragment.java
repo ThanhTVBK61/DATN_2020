@@ -27,14 +27,21 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    void replaceHomeFragment(Fragment mFragment){
+    public void replaceHomeFragment(Fragment mFragment){
         fragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
                         R.anim.enter_left_to_right,R.anim.exit_left_to_right)
                 .replace(R.id.flMainHome,mFragment).addToBackStack(null).commit();
     }
 
-    void backHomeStack(){
+    void replaceNoAddHomeFragment(Fragment mFragment){
+        fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right,R.anim.exit_left_to_right)
+                .replace(R.id.flMainHome,mFragment).commit();
+    }
+
+    public void backHomeStack(){
         fragmentManager.popBackStack();
     }
 }

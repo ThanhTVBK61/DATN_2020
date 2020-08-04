@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="10dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp"
+    android:paddingEnd="10dp">
+
+    <ImageView
+        android:id="@+id/ivPersonComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/ic_unknown_person"/>
+    <TextView
+        android:id="@+id/tvContentComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/ivPersonComment"
+        android:backgroundTint="@color/comment"
+        android:background="@drawable/shape_rounded_edittext"
+        android:paddingStart="10dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="7dp"
+        android:text="Bài đánh giá rất hay"/>
+
+    <ImageView
+        android:id="@+id/ivLikeComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvContentComment"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@id/ivPersonComment"
+        android:src="@drawable/ic_like"
+        android:tint="@color/colorGray"/>
+
+    <TextView
+        android:id="@+id/tvNumberLikeComment"
+        android:layout_below="@+id/tvContentComment"
+        android:layout_toEndOf="@id/ivLikeComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="26"/>
+
+    <TextView
+        android:id="@+id/tvTimeComment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvContentComment"
+        android:layout_toEndOf="@id/tvNumberLikeComment"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="3dp"
+        android:text="09:04 27-04-2020"/>
+
+</RelativeLayout>

@@ -10,7 +10,7 @@ public class InformationAccountResponse {
     @SerializedName("isSuccess")
     private boolean isSuccess;
 
-    @SerializedName("user")
+    @SerializedName("data")
     private List<InformationAccountModel> informationAccountModel;
 
     public InformationAccountResponse() {

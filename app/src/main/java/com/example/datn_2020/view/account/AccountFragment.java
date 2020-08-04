@@ -27,14 +27,14 @@ public class AccountFragment extends Fragment {
         return view;
     }
 
-    void replaceFragment(Fragment mFragment){
+    public void replaceFragment(Fragment mFragment){
         fragmentManager.beginTransaction()
                 .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
                         R.anim.enter_left_to_right,R.anim.exit_left_to_right)
                 .replace(R.id.flAccount,mFragment).addToBackStack(null).commit();
     }
 
-     void backStack(){
+     public void backStack(){
         fragmentManager.popBackStack();
     }
 }

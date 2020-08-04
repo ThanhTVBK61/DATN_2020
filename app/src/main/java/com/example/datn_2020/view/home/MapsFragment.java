@@ -2,6 +2,7 @@ package com.example.datn_2020.view.home;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,10 +30,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import com.example.datn_2020.R;
+import com.example.datn_2020.adapter.ItemRecyclerViewClickListener;
 import com.example.datn_2020.adapter.home.ListPlacesAdapter;
 import com.example.datn_2020.adapter.home.StartSnapHelper;
-import com.example.datn_2020.repository.model.ListPlaceModel;
-import com.example.datn_2020.viewmodel.home.ListPlaceVM;
+import com.example.datn_2020.repository.model.CurrentUser;
+import com.example.datn_2020.repository.model.FavouritePlaceCheckModel;
+import com.example.datn_2020.repository.model.PlaceModel;
+import com.example.datn_2020.viewmodel.ContainerVM;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -47,9 +53,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPlacesAdapter.ItemPlaceMapClickListener, View.OnClickListener {
+public class MapsFragment extends Fragment implements OnMapReadyCallback, ItemRecyclerViewClickListener, View.OnClickListener {
 
-    private final String TAG = "ListPlacesFragment";
+    private final String TAG = "MapFragment";
     private final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
     private final String COURSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
     private final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
@@ -59,42 +65,63 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
 
     private String currentCoordinate;
 
-    private ListPlaceVM listPlaceVM;
-    private ArrayList<ListPlaceModel> listPlace = new ArrayList<>();
     private ListPlacesAdapter listPlacesAdapter;
+    private ArrayList<PlaceModel> listPlaces = new ArrayList<>();
+    private FavouritePlaceCheckModel favouritePlaceCheckModel = new FavouritePlaceCheckModel();
 
     private RecyclerView rvListPlacesMap;
     private Toolbar tbListPlaceMap;
     private GoogleMap mMap;
-    private String typePlace;
     private FloatingActionButton fabNavigation;
+
+    private HomeFragment homeFragment;
+    private FragmentActivity fragmentActivity;
+    private Context mContext;
+    private ContainerVM mapPlaceVM;
+    private boolean isGuest;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_maps, container, false);
 
+        if(getActivity()!=null){
+            fragmentActivity = getActivity();
+        }
+
+        homeFragment = (HomeFragment) getParentFragment();
+        mapPlaceVM = new ViewModelProvider(getActivity()).get(ContainerVM.class);
+
+        if(CurrentUser.getInstance().id == -1){
+            isGuest = true;
+        }
+
         registerViews(view);
         registerToolbar();
 
-        listPlaceVM = new ViewModelProvider(getActivity()).get(ListPlaceVM.class);
-        listPlaceVM.getListPlaceModelMutableLiveData().observe(getActivity(), new Observer<ArrayList<ListPlaceModel>>() {
+        registerRecyclerView();
+        mapPlaceVM.getListCurrentTypePlace().observe(getViewLifecycleOwner(), new Observer<ArrayList<PlaceModel>>() {
             @Override
-            public void onChanged(ArrayList<ListPlaceModel> listPlaceModels) {
-                listPlace = listPlaceModels;
-                String[] coordinate = listPlace.get(0).getCoordinatePlace().split(" ");
-                currentCoordinate = coordinate[0]+","+coordinate[1]+"("+listPlace.get(0).getNamePlace()+")";
+            public void onChanged(ArrayList<PlaceModel> placeModels) {
+                listPlaces = placeModels;
+                listPlacesAdapter.setItems(listPlaces);
+
+                Log.i(TAG, " " + listPlaces.size());
+                String[] coordinate = listPlaces.get(0).getCoordinatePlace().split(" ");
+                currentCoordinate = coordinate[0] + "," + coordinate[1] + "(" + listPlaces.get(0).getNamePlace() + ")";
             }
         });
 
         getLocationPermission();
-        registerRecyclerView();
+
         fabNavigation.setOnClickListener(this);
 
         return view;
     }
 
+
     private void registerToolbar() {
         Bundle bundle = getArguments();
+        String typePlace;
         if (bundle != null) {
             typePlace = bundle.getString("type");
         } else {
@@ -105,18 +132,18 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
         tbListPlaceMap.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragment homeFragment = (HomeFragment) getParentFragment();
                 homeFragment.backHomeStack();
             }
         });
     }
 
     private void registerRecyclerView() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(fragmentActivity, LinearLayoutManager.HORIZONTAL, false);
         rvListPlacesMap.setLayoutManager(linearLayoutManager);
+        rvListPlacesMap.setHasFixedSize(true);
         SnapHelper snapHelper = new StartSnapHelper();
         snapHelper.attachToRecyclerView(rvListPlacesMap);
-        listPlacesAdapter = new ListPlacesAdapter(getActivity(), listPlace,this);
+        listPlacesAdapter = new ListPlacesAdapter(fragmentActivity, isGuest, listPlaces, this);
         rvListPlacesMap.setAdapter(listPlacesAdapter);
 
     }
@@ -132,11 +159,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
 
         if (ContextCompat.checkSelfPermission(getContext(), FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            if (ContextCompat.checkSelfPermission(getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                mLocationPermissionGranted = true;
-            } else {
-                mLocationPermissionGranted = false;
-            }
+            mLocationPermissionGranted = ContextCompat.checkSelfPermission(getContext(), COURSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
         } else {
             mLocationPermissionGranted = false;
         }
@@ -167,16 +190,17 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
             moveCamera(new LatLng(21.004977, 105.843785));
             setMakerPlace();
         }
+
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 String namePlace = marker.getTitle();
-                Log.i("NamePlace",namePlace);
-                for (int pos = 0; pos < listPlace.size(); pos++) {
-                    if(listPlace.get(pos).getNamePlace().equals(namePlace)){
+                Log.i(TAG, "Name Place -" + namePlace);
+                for (int pos = 0; pos < listPlaces.size(); pos++) {
+                    if (listPlaces.get(pos).getNamePlace().equals(namePlace)) {
                         rvListPlacesMap.smoothScrollToPosition(pos);
-                        String[] coordinate = listPlace.get(pos).getCoordinatePlace().split(" ");
-                        currentCoordinate = coordinate[0]+","+coordinate[1]+"("+listPlace.get(pos).getNamePlace()+")";
+                        String[] coordinate = listPlaces.get(pos).getCoordinatePlace().split(" ");
+                        currentCoordinate = coordinate[0] + "," + coordinate[1] + "(" + listPlaces.get(pos).getNamePlace() + ")";
                         break;
                     }
                 }
@@ -201,7 +225,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
                             setMakerPlace();
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
-                            Toast.makeText(getActivity(), "unable to get current location", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(fragmentActivity, "unable to get current location", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -231,8 +255,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
 
     private void setMakerPlace() {
 
-        if (listPlace.size() > 0) {
-            for (ListPlaceModel placeInfo : listPlace) {
+        if (listPlaces.size() > 0) {
+            for (PlaceModel placeInfo : listPlaces) {
                 String[] coordinate = placeInfo.getCoordinatePlace().split(" ");
                 float lat = Float.parseFloat(coordinate[0]);
                 float lng = Float.parseFloat(coordinate[1]);
@@ -249,24 +273,75 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
     }
 
     @Override
-    public void onItemClick(ListPlaceModel listPlaceModel) {
-        HomeFragment homeFragment = (HomeFragment) getParentFragment();
+    public void onItemClick(PlaceModel placeModel,int position) {
+        mapPlaceVM.loadPlaceById(placeModel.getIdPlace());
         homeFragment.replaceHomeFragment(new PlaceDetail());
     }
 
     @Override
+    public void onFavouriteItemClick(PlaceModel placeModel, final boolean checked, final int position) {
+        if (isGuest) {
+
+            AlertDialog alertDialog = new AlertDialog.Builder(mContext)
+                    .setTitle("Thông báo")
+                    .setMessage("Đăng nhập để tạo danh sách địa điểm yêu thích !")
+                    .setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    }).create();
+
+            alertDialog.show();
+            Button negative = alertDialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE);
+            negative.setTextColor(negative.getResources().getColor(R.color.colorBlue700));
+        } else {
+            favouritePlaceCheckModel.setIdPlace(placeModel.getIdPlace());
+            favouritePlaceCheckModel.setFavourite(checked);
+            favouritePlaceCheckModel.setIdUser(CurrentUser.getInstance().id);
+            mapPlaceVM.updateFavouritePlace(favouritePlaceCheckModel);
+            mapPlaceVM.getCheckFavouriteResponse().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+                @Override
+                public void onChanged(Boolean result) {
+                    if(result){
+                        if(checked){
+                            listPlaces.get(position).setFavourite(1);
+                        }else {
+                            listPlaces.get(position).setFavourite(0);
+                        }
+                        listPlacesAdapter.notifyDataSetChanged();
+                    }else {
+                       AlertDialog mAlertDialog = new AlertDialog.Builder(mContext)
+                                .setTitle("Thông báo")
+                                .setMessage("Không thành công!")
+                                .setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                }).create();
+                        mAlertDialog.show();
+                        Button negative = mAlertDialog.getButton(DialogInterface.BUTTON_NEGATIVE);
+                        negative.setTextColor(negative.getResources().getColor(R.color.colorBlue700));
+                    }
+                }
+            });
+        }
+    }
+
+    @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.fabNavigation:
 //                Uri gmmIntentUri = Uri.parse("google.navigation:q="+currentCoordinate);
 //                Uri gmmIntentUri = Uri.parse("geo:0,0?q=1,Đại Cồ Việt, Hai Bà Trưng, Hà Nội");
-                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+currentCoordinate);
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + currentCoordinate);
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 if (mapIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                     startActivity(mapIntent);
-                }else {
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                } else {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
                     alertDialogBuilder.setTitle("Thông báo");
                     alertDialogBuilder.setMessage("Điện thoại không hỗ trợ tìm đường");
                     alertDialogBuilder.setPositiveButton("Thoát", new DialogInterface.OnClickListener() {
@@ -280,5 +355,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, ListPl
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        mContext = null;
     }
 }

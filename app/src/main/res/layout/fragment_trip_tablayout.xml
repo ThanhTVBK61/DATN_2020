@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.trip.TripTabLayoutFragment">
-    <ImageView
-        android:src="@drawable/selector_star"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListTrip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <ImageView
-        android:src="@drawable/selector_star"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
+        android:layout_height="wrap_content"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WWW.ANDROIDCOBAN.COM" />
-
-</LinearLayout>
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="500dp"
+        android:backgroundTint="#F6059E"
+        android:src="@drawable/ic_add_trip"
+        app:fabSize="normal" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

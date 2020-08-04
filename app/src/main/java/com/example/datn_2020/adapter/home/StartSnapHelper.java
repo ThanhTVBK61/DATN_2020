@@ -25,6 +25,8 @@ public class StartSnapHelper extends LinearSnapHelper {
     @Override
     public void attachToRecyclerView(@Nullable RecyclerView recyclerView)
             throws IllegalStateException {
+        assert recyclerView != null;
+        recyclerView.setOnFlingListener(null);
         super.attachToRecyclerView(recyclerView);
     }
 

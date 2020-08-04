@@ -71,15 +71,15 @@ public class EditSexAccountDialogFragment extends DialogFragment implements Comp
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ivCloseSexDialog:
-                getDialog().dismiss();
+                this.dismiss();
                 break;
             case R.id.tvSelectSex:
                 if(rbMan.isChecked()){
                     selectSexDialog.selectSex("Nam");
-                    getDialog().dismiss();
+                    this.dismiss();
                 }else if(rbWoman.isChecked()){
                     selectSexDialog.selectSex("Nữ");
-                    getDialog().dismiss();
+                    this.dismiss();
                 }else {
                     tvNotification.setVisibility(View.VISIBLE);
                 }

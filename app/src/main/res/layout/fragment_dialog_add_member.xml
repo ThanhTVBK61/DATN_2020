@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="380dp"
+    android:minHeight="270dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="Thêm thành viên mới"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:text="Tên của thành viên"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/etNameNewUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="textNoSuggestions"
+        android:hint="Nhập tên thành viên muốn thêm"/>
+
+    <TextView
+        android:id="@+id/tvSelectAddMember"
+        style="@android:style/Widget.Button"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_gravity="right"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:text="Thêm"
+        android:textColor="@color/colorBlue700"
+        android:textSize="16sp" />
+
+</LinearLayout>

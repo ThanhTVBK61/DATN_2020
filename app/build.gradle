@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.0"
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "com.example.datn_2020"
@@ -44,7 +44,7 @@ dependencies {
 
     //Card view vs RecyclerView
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha03'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha04'
     implementation 'androidx.recyclerview:recyclerview-selection:1.1.0-rc01'
 
     //smile rating
@@ -80,9 +80,17 @@ dependencies {
 
     //stetho
     implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
-    //Room components
+    //Room
     def room_version = "2.2.5"
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    //Room x Rxjava2
+    implementation 'android.arch.persistence.room:rxjava2:2.2.2'
+    testImplementation 'android.arch.persistence.room:testing:1.1.1'
+
+    //socketio
+    implementation 'com.github.nkzawa:socket.io-client:0.6.0'
 }

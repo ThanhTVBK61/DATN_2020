@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/ibButtonTripBack"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_back_white"
+        android:elevation="8dp"
+        android:scaleType="center"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_button_back"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="670dp"
+        android:backgroundTint="#6200ea"
+        android:src="@drawable/ic_add_trip"
+        app:fabSize="normal"
+        app:layout_anchor="@id/ibButtonTripBack"
+        app:layout_anchorGravity="bottom|right"/>
+
+
+    <fragment
+        android:id="@+id/fAllPlaceInTrip"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="140dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rlBottomSheet"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="170dp"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:background="@drawable/shape_view_below_viewpager">
+
+        <TextView
+            android:id="@+id/tvNameTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="Phượt Hà Nội"
+            android:textColor="@color/colorBlack"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:id="@+id/ivAdminTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNameTrip"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_admin"
+            android:tint="#fbc02d"/>
+
+        <TextView
+            android:id="@+id/tvAdminTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNameTrip"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@id/ivIconTimeTrip"
+            android:text="Admin: Khanh"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/ivMemberTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivAdminTrip"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_account"
+            android:tint="#512da8"/>
+
+        <ImageView
+            android:id="@+id/ivEditMemberInTrip"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_below="@id/ivAdminTrip"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="21dp"
+            android:layout_toEndOf="@id/tvMemberTrip"
+            android:backgroundTint="@color/colorWhite"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/colorGray"/>
+
+
+        <TextView
+            android:id="@+id/tvMemberTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivAdminTrip"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@id/ivIconTimeTrip"
+            android:text="Thành viên: 10"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <ImageView
+            android:id="@+id/ivIconTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivMemberTrip"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_calculator"
+            android:tint="@color/colorRed"/>
+
+        <TextView
+            android:id="@+id/tvTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivMemberTrip"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="18dp"
+            android:layout_toEndOf="@id/ivIconTimeTrip"
+            android:text="12 thg 6 -> 30 thg 6"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/nsvListFunction"
+            android:layout_below="@+id/ivIconTimeTrip"
+            android:layout_marginTop="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivIconDescriptionTrip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:src="@drawable/ic_description"
+                    android:tint="@color/colorBlue700"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_toEndOf="@id/ivIconDescriptionTrip"
+                    android:text="Mô tả chuyến đi"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/tvDescriptionTrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Chưa có mô tả cho chuyến đi này"
+                    android:textStyle="italic"
+                    android:layout_below="@+id/ivIconDescriptionTrip"/>
+
+                <LinearLayout
+                android:id="@+id/llFunctions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvDescriptionTrip"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:id="@+id/llEditTrip"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_edit"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chỉnh sửa chuyến đi"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp"
+                        android:layout_marginStart="5dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llEditTimeTrip"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_schedule"/>
+                    <TextView
+                        android:layout_marginStart="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chỉnh sửa thời gian"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llAddMember"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="5dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_add_member"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thêm thành viên"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15sp"
+                        android:layout_marginStart="5dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvListPlaceInTrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/llFunctions"
+                    android:layout_marginTop="5dp" />
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

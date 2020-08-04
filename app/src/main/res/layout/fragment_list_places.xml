@@ -21,7 +21,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/layer_list_button_map"
-        android:elevation="10dp"
+        android:elevation="5dp"
         android:orientation="horizontal"
         android:padding="3dp">
         <ImageView

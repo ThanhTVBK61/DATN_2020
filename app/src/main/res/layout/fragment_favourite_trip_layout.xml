@@ -5,14 +5,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.trip.SeenTripTabLayoutFragment">
-    <ImageView
-        android:src="@drawable/selector_star"
+    tools:context=".view.trip.FavouritePlaceTabLayoutFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="WWW.ANDROIDCOBAN.COM" />
+        android:layout_height="match_parent"
+        android:id="@+id/rvListFavouritePlace"
+        android:paddingBottom="50dp"
+        android:clipToPadding="false"/>
 
 </LinearLayout>

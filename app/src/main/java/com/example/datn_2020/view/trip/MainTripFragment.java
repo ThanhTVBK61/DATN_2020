@@ -14,17 +14,17 @@ import com.example.datn_2020.R;
 import com.example.datn_2020.adapter.home.PagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
-public class TripFragment extends Fragment{
+public class MainTripFragment extends Fragment{
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-    public TripFragment() {
+    public MainTripFragment() {
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_trip,container,false);
+        View view = inflater.inflate(R.layout.fragment_main_trip,container,false);
         //register views
         registerViews(view);
         registerTabs();
@@ -39,7 +39,7 @@ public class TripFragment extends Fragment{
     private void registerTabs(){
         PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(),0);
         pagerAdapter.addNewTab(new TripTabLayoutFragment(),"Danh sách chuyến đi");
-        pagerAdapter.addNewTab(new FavouriteTripTabLayoutFragment(),"Địa điểm ưa thích");
+        pagerAdapter.addNewTab(new FavouritePlaceTabLayoutFragment(),"Địa điểm ưa thích");
         viewPager.setAdapter(pagerAdapter);
 
         tabLayout.setupWithViewPager(viewPager);

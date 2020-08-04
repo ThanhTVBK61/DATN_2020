@@ -1,33 +1,37 @@
 package com.example.datn_2020.adapter.home;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.datn_2020.R;
-import com.example.datn_2020.repository.model.PlaceResponse;
+import com.example.datn_2020.adapter.ItemRecyclerViewClickListener;
+import com.example.datn_2020.repository.model.PlaceModel;
 import com.joooonho.SelectableRoundedImageView;
 
 import java.util.ArrayList;
 
-class ViewHolder extends RecyclerView.ViewHolder{
+class ViewHolder extends RecyclerView.ViewHolder {
 
     private SelectableRoundedImageView imagePlace;
     private TextView namePlace;
     private TextView numberRating;
     private TextView tvAddressPlace;
     private RatingBar ratingBar;
-    private CheckBox favourite;
+    private ImageButton ibFavourite;
 
     ViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -36,66 +40,124 @@ class ViewHolder extends RecyclerView.ViewHolder{
         namePlace = itemView.findViewById(R.id.tvNamePlace);
         numberRating = itemView.findViewById(R.id.tvNumberRating);
         ratingBar = itemView.findViewById(R.id.ratingMark);
-        favourite = itemView.findViewById(R.id.cbFavourite);
+        ibFavourite = itemView.findViewById(R.id.ibFavourite);
         tvAddressPlace = itemView.findViewById(R.id.tvAddressPlace);
     }
 
-    void bind(Context context, final PlaceResponse item_place){
-        this.namePlace.setText(item_place.getNamePlace());
-        String numberRatingReview = "4.5 "+"("+ item_place.getSumReview()+")";
+    void bind(final Context context, final PlaceModel currentPlace, final int position, final String type, final boolean isGuest, final PlaceHomeAdapter.ItemHomeClickListener itemClickListener) {
+        this.namePlace.setText(currentPlace.getNamePlace());
+        this.tvAddressPlace.setText(currentPlace.getAddress());
+
+        String numberRatingReview = currentPlace.getSumRating() + " đánh giá";
         this.numberRating.setText(numberRatingReview);
-        this.tvAddressPlace.setText(item_place.getAddress());
+
+        String[] urls = currentPlace.getSrcImage().split(" ");
         Glide.with(context)
                 .asBitmap()
-                .load(item_place.getSrcImage())
+                .load(urls[0])
                 .into(this.imagePlace);
-        if(item_place.getFavourite() == 1){
-            this.favourite.setChecked(true);
-        }else {
-            this.favourite.setChecked(false);
+
+        if (isGuest) {
+            this.ibFavourite.setImageResource(R.drawable.ic_love_bound);
+            this.ibFavourite.setTag(R.drawable.ic_love_bound);
+        } else {
+            if (currentPlace.getFavourite() == 1) {
+                this.ibFavourite.setImageResource(R.drawable.ic_love);
+                this.ibFavourite.setTag(R.drawable.ic_love);
+            } else {
+                this.ibFavourite.setImageResource(R.drawable.ic_love_bound);
+                this.ibFavourite.setTag(R.drawable.ic_love_bound);
+            }
         }
 
-        this.favourite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        this.ibFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    item_place.setFavourite(1);
-                    Log.i("Check","true");
-                }else {
-                    item_place.setFavourite(0);
-                    Log.i("Check","false");
+            public void onClick(View v) {
+
+                if (isGuest) {
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    alertDialogBuilder.setTitle("Thông báo");
+                    alertDialogBuilder.setMessage("Đăng nhập để tạo danh sách địa điểm yêu thích !");
+                    alertDialogBuilder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                    Button negative = alertDialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+                    negative.setTextColor(negative.getResources().getColor(R.color.colorBlue700));
+                } else {
+                    Integer resource = (Integer) ibFavourite.getTag();
+                    if (resource == R.drawable.ic_love) {
+                        itemClickListener.onFavouriteItemClick(currentPlace, false, position,type);
+                        ibFavourite.setImageResource(R.drawable.ic_love_bound);
+                        ibFavourite.setTag(R.drawable.ic_love_bound);
+                    } else if (resource == R.drawable.ic_love_bound) {
+                        itemClickListener.onFavouriteItemClick(currentPlace, true, position,type);
+                        ibFavourite.setImageResource(R.drawable.ic_love);
+                        ibFavourite.setTag(R.drawable.ic_love);
+                    }
                 }
+
             }
         });
 
-        ratingBar.setRating(item_place.getNumberStar());
+        double rating = (currentPlace.getLocation() + currentPlace.getPrice() + currentPlace.getService() + currentPlace.getQuality()) / 4.0;
+        ratingBar.setRating((float) rating);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickListener.onItemClick(currentPlace);
+            }
+        });
     }
 }
 
 public class PlaceHomeAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private Context context;
-    private ArrayList<PlaceResponse> item_placeArrayList;
+    private ArrayList<PlaceModel> placeModels;
+    private ItemHomeClickListener itemClickListener;
+    private boolean isGuest;
+    private String type;
 
-    public PlaceHomeAdapter(Context context, ArrayList<PlaceResponse> item_placeArrayList) {
+    public PlaceHomeAdapter(Context context, boolean isGuest, ArrayList<PlaceModel> item_placeArrayList,String type, ItemHomeClickListener itemClickListener) {
         this.context = context;
-        this.item_placeArrayList = item_placeArrayList;
+        this.placeModels = item_placeArrayList;
+        this.itemClickListener = itemClickListener;
+        this.isGuest = isGuest;
+        this.type = type;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_place,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_place, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(context,item_placeArrayList.get(position));
+        holder.bind(context, placeModels.get(position), position,type, isGuest, itemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        return item_placeArrayList.size();
+        return placeModels.size();
     }
+
+    public void setItems(ArrayList<PlaceModel> items) {
+        placeModels = items;
+        notifyDataSetChanged();
+    }
+
+    public interface ItemHomeClickListener {
+        void onItemClick(PlaceModel placeModel);
+        void onFavouriteItemClick(PlaceModel placeModel, boolean isChecked, int position,String type);
+    }
+
 }

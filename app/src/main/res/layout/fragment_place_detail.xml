@@ -8,9 +8,9 @@
         android:id="@+id/placeDetailAppbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:elevation="8dp"
         android:background="@color/colorWhite"
+        android:elevation="8dp"
+        android:fitsSystemWindows="true"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -55,9 +55,10 @@
                 <ImageView
                     android:layout_width="15dp"
                     android:layout_height="15dp"
-                    android:layout_marginRight="7dp"
+                    android:layout_marginEnd="7dp"
                     android:src="@drawable/ic_camera" />
                 <TextView
+                    android:id="@+id/tvNumberOfPicture"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="120"
@@ -66,12 +67,12 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:background="@drawable/shape_view_below_viewpager"
-                android:layout_marginTop="240dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_collapseMode="none"
-                android:padding="20dp">
+                android:layout_marginTop="240dp"
+                android:background="@drawable/shape_view_below_viewpager"
+                android:padding="20dp"
+                app:layout_collapseMode="none">
                 <ImageView
                     android:id="@+id/ivStylePlaceDetail"
                     android:layout_width="30dp"
@@ -82,7 +83,7 @@
                     android:id="@+id/tvNamePlaceDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/ivStylePlaceDetail"
+                    android:layout_toEndOf="@+id/ivStylePlaceDetail"
                     android:text="Công viên thống nhất"
                     android:textColor="@color/colorBlack"
                     android:textSize="24sp"
@@ -92,7 +93,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvNamePlaceDetail"
-                    android:layout_toRightOf="@+id/ivStylePlaceDetail"
+                    android:layout_toEndOf="@+id/ivStylePlaceDetail"
                     android:text="354A Đường Lê Duẩn, Phương Liên, Đống Đa, Hà Nội"
                     android:textColor="@color/colorGray700"/>
 
@@ -184,13 +185,14 @@
 
                 <RatingBar
                     android:id="@+id/rbRatingService"
+                    style="@style/RatingBarStar"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
-                    android:layout_marginTop="8dp"
-                    android:numStars="5"
-                    android:layout_toRightOf="@id/tvScorePlaceDetail"
                     android:layout_below="@id/tvReviewPlaceDetail"
-                    style="@style/RatingBarStar" />
+                    android:layout_marginTop="8dp"
+                    android:layout_toEndOf="@id/tvScorePlaceDetail"
+                    android:isIndicator="true"
+                    android:numStars="5"/>
 
                 <TextView
                     android:id="@+id/tvQualityPlaceDetail"
@@ -208,8 +210,9 @@
                     android:layout_height="24dp"
                     android:layout_below="@id/rbRatingService"
                     android:layout_marginTop="4dp"
-                    android:layout_toRightOf="@id/tvScorePlaceDetail"
-                    android:numStars="5" />
+                    android:layout_toEndOf="@id/tvScorePlaceDetail"
+                    android:isIndicator="true"
+                    android:numStars="5"/>
 
                 <TextView
                     android:id="@+id/tvPricePlaceDetail"
@@ -227,8 +230,9 @@
                     android:layout_height="24dp"
                     android:layout_below="@id/rbRatingQuality"
                     android:layout_marginTop="4dp"
-                    android:layout_toRightOf="@id/tvScorePlaceDetail"
-                    android:numStars="5" />
+                    android:layout_toEndOf="@id/tvScorePlaceDetail"
+                    android:isIndicator="true"
+                    android:numStars="5"/>
 
                 <TextView
                     android:id="@+id/tvLocationPlaceDetail"
@@ -246,16 +250,17 @@
                     android:layout_height="24dp"
                     android:layout_below="@id/rbRatingPrice"
                     android:layout_marginTop="4dp"
-                    android:layout_toRightOf="@id/tvScorePlaceDetail"
+                    android:layout_toEndOf="@id/tvScorePlaceDetail"
+                    android:isIndicator="true"
                     android:numStars="5" />
                 <TextView
                     android:id="@+id/tvSumReviews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="13123 lượt đánh giá"
-                    android:textColor="@color/colorGray"
                     android:layout_below="@+id/rbRatingLocation"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:text="13123 lượt đánh giá"
+                    android:textColor="@color/colorGray"/>
 
             </RelativeLayout>
 
@@ -290,4 +295,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fbAddPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="330dp"
+        android:layout_marginTop="640dp"
+        android:backgroundTint="#6200ea"
+        android:src="@drawable/ic_add_trip"
+        app:fabSize="normal" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -30,13 +30,12 @@
             android:textColor="@color/colorBlack"
             android:textSize="16sp" />
 
-        <CheckBox
-            android:id="@+id/cbFavouriteListPlaces"
+        <ImageButton
+            android:id="@+id/ibFavouriteListPlaces"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_margin="5dp"
-            android:button="@drawable/selector_checkbox_favourite_listplaces" />
+            android:backgroundTint="@color/colorWhite"/>
 
         <TextView
             android:id="@+id/tvAddressListPlaces"
@@ -44,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tvNameListPlaces"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="7dp"
             android:layout_toEndOf="@id/imgListPlaces"
             android:text="101A Phương Mai Đống Đa Hà Nội"/>
 

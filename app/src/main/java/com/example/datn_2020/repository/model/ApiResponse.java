@@ -1,4 +1,4 @@
-package com.example.datn_2020.repository.room;
+package com.example.datn_2020.repository.model;
 
 import com.google.gson.annotations.SerializedName;
 

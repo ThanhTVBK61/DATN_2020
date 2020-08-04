@@ -3,6 +3,7 @@ package com.example.datn_2020.repository.model;
 public class LoginModel {
     private String username;
     private String password;
+    private String type = "Thành viên";
 
 
     public LoginModel() {

@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tbEditInformationAccount"
         android:background="@drawable/shape_edit_information"
+        android:backgroundTint="@color/colorGrayBound"
         android:clickable="true"
         style="@style/rl_edit_information"
         android:focusable="true">
@@ -33,20 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
-            android:text="* Họ &amp; tên" />
+            android:text="Username" />
 
         <TextView
-            android:id="@+id/tvNotificationNameAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@id/tvTitleEditNameInformation"
-            android:text="Bạn chưa nhập tên *"
-            android:textColor="@color/colorRed"
-            android:visibility="gone"/>
-
-        <EditText
-            android:id="@+id/etEditNameInformation"
+            android:id="@+id/tvEditNameInformation"
             android:layout_below="@id/tvTitleEditNameInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,14 +46,12 @@
             android:textColor="@color/colorBlack" />
 
         <ImageView
-            android:id="@+id/ivEditNameInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_clear"
-            android:tint="@color/colorGray"
-            android:visibility="gone" />
+            android:src="@drawable/ic_account"
+            android:tint="@color/colorGray" />
 
     </RelativeLayout>
 
@@ -75,17 +64,18 @@
         style="@style/rl_edit_information">
 
         <TextView
-            android:id="@+id/tvEditDatetimeInformation"
+            android:id="@+id/tvTitleDatetimeInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
             android:text="Ngày sinh"/>
 
         <TextView
+            android:id="@+id/tvDatetimeInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvEditDatetimeInformation"
-            android:text="23/11/1998"
+            android:layout_below="@+id/tvTitleDatetimeInformation"
+            android:text="..."
             android:textColor="@color/colorBlack"/>
 
         <ImageView
@@ -107,18 +97,20 @@
         style="@style/rl_edit_information">
 
         <TextView
-            android:id="@+id/tvEditSexInformation"
+            android:id="@+id/tvTitleEditSexInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="7dp"
             android:text="Giới tính"/>
 
         <TextView
+            android:id="@+id/tvEditSexInformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvEditSexInformation"
-            android:text="Nam"
-            android:textColor="@color/colorBlack"/>
+            android:layout_below="@+id/tvTitleEditSexInformation"
+            android:layout_marginTop="14dp"
+            android:text="..."
+            android:textColor="@color/colorBlack" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -150,10 +142,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvEditDescriptionInformation"
-            android:text="Thích màu hồng và ghét sự giả dối"
             android:background="@null"
             android:textSize="14sp"
-            android:textColor="@color/colorBlack"/>
+            android:textColor="@color/colorBlack"
+            android:hint="Thêm mô tả về bản thân"/>
 
         <ImageView
             android:id="@+id/ivEditDescriptionInformation"

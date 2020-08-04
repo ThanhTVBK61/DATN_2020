@@ -10,10 +10,10 @@ public class ListPlaceResponse {
     private Boolean isSuccess;
 
     @SerializedName("data")
-    private ArrayList<ListPlaceModel> listPlaceModels;
+    private ArrayList<PlaceModel> placeModels;
 
     public ListPlaceResponse() {
-        listPlaceModels = new ArrayList<>();
+        placeModels = new ArrayList<>();
     }
 
     public Boolean getIsSuccess() {
@@ -24,11 +24,11 @@ public class ListPlaceResponse {
         this.isSuccess = isSuccess;
     }
 
-    public ArrayList<ListPlaceModel> getListPlaceModels() {
-        return listPlaceModels;
+    public ArrayList<PlaceModel> getPlaceModels() {
+        return placeModels;
     }
 
-    public void setListPlaceModels(ArrayList<ListPlaceModel> listPlaceModels) {
-        this.listPlaceModels = listPlaceModels;
+    public void setPlaceModels(ArrayList<PlaceModel> placeModels) {
+        this.placeModels = placeModels;
     }
 }

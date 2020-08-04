@@ -13,17 +13,17 @@ public class Db {
     public static AppDatabase getDB(){
         if(datnDatabase == null){
             datnDatabase = Room.databaseBuilder(App.INSTANCE, AppDatabase.class, DATABASE_NAME)
-                    .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_1_2)
+//                    .allowMainThreadQueries()
+//                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
         return datnDatabase;
     }
 
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
+    private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(SupportSQLiteDatabase database) {
-            database.execSQL("DROP TABLE username;");
+            database.execSQL("DROP TABLE username");
         }
     };
 

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tbPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        app:title="Tạo bài đánh giá">
+        <TextView
+            android:id="@+id/tvSendPost"
+            android:text="Đăng"
+            android:layout_marginStart="125dp"
+            style="@style/textview_toolbar"
+            android:background="?attr/selectableItemBackground" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tvVotePlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số sao:"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/tbPost"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/tvScorePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/tvVotePlace"
+        android:text="0.0"
+        android:layout_marginStart="20dp"
+        android:textSize="40sp"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:id="@+id/tvServicePost"
+        style="@style/ContentRating"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVotePlace"
+        android:layout_toEndOf="@+id/rbRatingService"
+        android:text="Dịch vụ"/>
+
+    <RatingBar
+        android:id="@+id/rbRatingService"
+        style="@style/RatingBarStar"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/tvVotePlace"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@id/tvScorePost"
+        android:numStars="5"/>
+
+    <TextView
+        android:id="@+id/tvQualityPost"
+        style="@style/ContentRating"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvServicePost"
+        android:layout_toEndOf="@+id/rbRatingService"
+        android:text="Chất lượng"/>
+
+    <RatingBar
+        android:id="@+id/rbRatingQuality"
+        style="@style/RatingBarStar"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/rbRatingService"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/tvScorePost"
+        android:numStars="5"/>
+
+    <TextView
+        android:id="@+id/tvPricePost"
+        style="@style/ContentRating"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvQualityPost"
+        android:layout_toEndOf="@+id/rbRatingService"
+        android:text="Giá cả"/>
+
+    <RatingBar
+        android:id="@+id/rbRatingPrice"
+        style="@style/RatingBarStar"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/rbRatingQuality"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/tvScorePost"
+        android:numStars="5"/>
+
+    <TextView
+        android:id="@+id/tvLocationPost"
+        style="@style/ContentRating"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPricePost"
+        android:layout_toEndOf="@+id/rbRatingService"
+        android:text="Vị trí"/>
+
+    <RatingBar
+        android:id="@+id/rbRatingLocation"
+        style="@style/RatingBarStar"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_below="@id/rbRatingPrice"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@id/tvScorePost"
+        android:numStars="5" />
+
+    <EditText
+        android:id="@+id/etPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        android:paddingStart="15dp"
+        android:background="@drawable/shape_rounded_edittext"
+        android:layout_below="@+id/rbRatingLocation"
+        android:layout_marginTop="20dp"
+        android:layout_margin="20dp"
+        android:hint="Viết đánh giá của bạn..."/>
+
+</RelativeLayout>

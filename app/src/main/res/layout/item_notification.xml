@@ -1,29 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rlItemNotification"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="10dp"
     android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="20dp"
+    android:paddingRight="20dp"
     android:paddingBottom="10dp">
 
     <ImageView
         android:id="@+id/ivImageAccountNotification"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:layout_centerVertical="true"
         android:src="@drawable/ic_unknown_person"/>
+
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:id="@+id/tvTimeNotification"
+       android:layout_below="@+id/ivConfirm"
+       android:layout_marginTop="15dp"
+       android:layout_toEndOf="@+id/ivImageAccountNotification"
+       android:text="09:04 21/05/2020"
+       android:layout_marginStart="20dp"/>
+
 
     <TextView
         android:id="@+id/tvContentNotification"
-        android:layout_toEndOf="@id/ivImageAccountNotification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
         android:layout_marginStart="20dp"
-        android:layout_gravity="center_vertical"
+        android:layout_toEndOf="@+id/ivImageAccountNotification"
         android:text="Phụng cẹc "
+        android:textColor="@color/colorBlack"
         android:textSize="16sp" />
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivConfirm"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tvContentNotification"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivImageAccountNotification"/>
+
+
+    <TextView
+        android:id="@+id/tvConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvContentNotification"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivConfirm"
+        android:text="Đã từ chối" />
+
+    <Button
+        android:id="@+id/btnAgreeInvitation"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvContentNotification"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_buttonlogin"
+        android:text="Đồng ý"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:visibility="visible"/>
+    <Button
+        android:id="@+id/btnDeleteInvitation"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/tvContentNotification"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@id/btnAgreeInvitation"
+        android:background="@drawable/rounded_buttonlogin"
+        android:backgroundTint="#D3D0D0"
+        android:text="Từ chối"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:visibility="gone" />
+
+</RelativeLayout>

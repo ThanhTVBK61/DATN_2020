@@ -16,16 +16,13 @@ import java.util.Objects;
 
 public class EditAddressAccountFragment extends Fragment {
 
-    private Toolbar toolbar;
-
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_edit_address_account,container,false);
 
-        toolbar = view.findViewById(R.id.tbEditAddressAccount);
-
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        Toolbar tbEditAddressAccount = view.findViewById(R.id.tbEditAddressAccount);
+        tbEditAddressAccount.setNavigationIcon(R.drawable.ic_back);
+        tbEditAddressAccount.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AccountFragment accountFragment = (AccountFragment) getParentFragment();

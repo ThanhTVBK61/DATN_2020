@@ -1,5 +1,5 @@
-package com.example.datn_2020.repository.network;
+package com.example.datn_2020.repository;
 
-public interface HandleResult<T> {
-    abstract void handleResponseResult(T params);
+public interface HandleSuccess<T> {
+    void handleSuccessResult(T params);
 }

@@ -38,7 +38,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Họ &amp; tên"
+                android:text="Username"
                 android:textColor="@color/colorGray"
                 android:layout_marginTop="22dp"/>
 

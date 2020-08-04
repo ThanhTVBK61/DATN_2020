@@ -27,7 +27,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginBottom="5dp"
         android:text="*Tên đăng nhập đã tồn tại"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorRed"
         android:visibility="gone"/>
 
     <RelativeLayout
@@ -104,13 +104,14 @@
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"/>
 
-        <ImageView
+        <CheckBox
+            android:id="@+id/cbPasswordSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_password_outline"
-            android:tint="@color/colorGray"/>
+            android:tint="@color/colorGray"
+            android:button="@drawable/selector_checkbox_visibility"/>
 
     </RelativeLayout>
 
@@ -185,7 +186,6 @@
             android:layout_below="@+id/tvAddressTitleSignUp"
             android:background="@null"
             android:hint="Nhập địa chỉ"
-            android:inputType="textPassword"
             android:textColor="@color/colorBlack"
             android:textColorHint="@color/colorGray"
             android:textSize="15sp"/>
@@ -226,7 +226,7 @@
             android:layout_below="@+id/tvBirthdayTitleSignUp"
             android:text="..."
             android:textColor="@color/colorBlack"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <ImageView
             android:layout_width="wrap_content"

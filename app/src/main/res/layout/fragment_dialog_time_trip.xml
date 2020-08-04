@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="380dp"
+    android:minHeight="380dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Cập nhật thời gian chuyến đi"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp" />
+
+    <RelativeLayout
+        android:id="@+id/rlStartTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlEditNameInformation"
+        android:background="@drawable/shape_edit_information"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvTitleStartTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textColor="@color/colorBlue700"
+            android:text="Thời gian bắt đầu"/>
+
+        <TextView
+            android:id="@+id/tvStartTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitleStartTimeTrip"
+            android:text="..."
+            android:textColor="@color/colorBlack"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorRed"
+            android:src="@drawable/ic_calculator"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlEndTrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rlEditNameInformation"
+        android:background="@drawable/shape_edit_information"
+        style="@style/rl_edit_information">
+
+        <TextView
+            android:id="@+id/tvTitleEndTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:textColor="@color/colorBlue700"
+            android:text="Thời gian kết thúc"/>
+
+        <TextView
+            android:id="@+id/tvEndTimeTrip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvTitleEndTimeTrip"
+            android:text="..."
+            android:textColor="@color/colorBlack"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/colorRed"
+            android:src="@drawable/ic_calculator"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
+        <TextView
+            android:id="@+id/tvSaveUpdateTime"
+            style="@android:style/Widget.Button"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="40dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Lưu"
+            android:textColor="@color/colorGray700"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvCancelUpdateTime"
+            style="@android:style/Widget.Button"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:text="Hủy"
+            android:textColor="@color/colorGray700"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

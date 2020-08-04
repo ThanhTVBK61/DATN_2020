@@ -14,11 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.repository.model.PlaceDetailHomeModel;
-import com.example.datn_2020.viewmodel.home.InformationPlaceVM;
+import com.example.datn_2020.viewmodel.ContainerVM;
 
 public class OverviewFragment extends Fragment {
 
-    private InformationPlaceVM informationPlaceVM;
     private TextView tvTypePlace;
     private TextView tvContentOverview;
 
@@ -33,8 +32,8 @@ public class OverviewFragment extends Fragment {
     }
 
     private void registerData() {
-        informationPlaceVM = new ViewModelProvider(getActivity()).get(InformationPlaceVM.class);
-        informationPlaceVM.getInformationPlaceResponse().observe(getActivity(), new Observer<PlaceDetailHomeModel>() {
+        ContainerVM informationPlaceVM = new ViewModelProvider(getActivity()).get(ContainerVM.class);
+        informationPlaceVM.getCurrentPlaceDetail().observe(getViewLifecycleOwner(), new Observer<PlaceDetailHomeModel>() {
             @Override
             public void onChanged(PlaceDetailHomeModel placeDetailHomeModel) {
                 tvTypePlace.setText(placeDetailHomeModel.getType());

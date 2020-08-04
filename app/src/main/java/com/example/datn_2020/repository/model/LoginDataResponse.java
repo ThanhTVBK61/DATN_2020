@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginDataResponse {
 
+    @SerializedName("Id")
+    private int idUser;
+
     @SerializedName("Username")
     private String username;
 
@@ -13,9 +16,18 @@ public class LoginDataResponse {
     public LoginDataResponse() {
     }
 
-    public LoginDataResponse(String username, String emailUser) {
+    public LoginDataResponse(int id, String username, String email) {
+        this.idUser = id;
         this.username = username;
-        this.email = emailUser;
+        this.email = email;
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int id) {
+        this.idUser = id;
     }
 
     public String getUsername() {

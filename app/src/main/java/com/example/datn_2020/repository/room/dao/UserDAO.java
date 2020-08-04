@@ -1,20 +1,23 @@
 package com.example.datn_2020.repository.room.dao;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.datn_2020.repository.room.entity.User;
 
+import io.reactivex.Maybe;
+import io.reactivex.Single;
+
 @Dao
 public interface UserDAO {
     @Query("Select * from user")
-    LiveData<User> getUser();
+    Maybe<User> getUser();
 
     @Insert
-    void insertUser(User user);
+    Single<Long> insert(User user);
 
-    @Query("Delete from user where Username = :username")
-    void deleteUser(String username);
+    @Delete
+    Single<Integer> delete(User user);
 }

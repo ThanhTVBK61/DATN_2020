@@ -2,36 +2,60 @@ package com.example.datn_2020.viewmodel.login;
 
 import android.util.Log;
 
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.datn_2020.repository.HandleError;
+import com.example.datn_2020.repository.LoginRepository;
 import com.example.datn_2020.repository.model.LoginModel;
 import com.example.datn_2020.repository.model.LoginResponse;
-import com.example.datn_2020.repository.room.db.Db;
 import com.example.datn_2020.repository.room.entity.User;
-import com.example.datn_2020.repository.network.HandleResult;
-import com.example.datn_2020.repository.network.login.LoginCallApi;
+import com.example.datn_2020.repository.HandleSuccess;
 
 public class LoginVM extends ViewModel {
-    private LiveData<User> userData;
+    private LoginRepository loginRepository = new LoginRepository();
+    private MutableLiveData<User> userData = new MutableLiveData<>();
+    private MutableLiveData<String> errorData = new MutableLiveData<>();
+    private MutableLiveData<Long> rowIdInsert = new MutableLiveData<>();
     private MutableLiveData<LoginResponse> mCheckLogin = new MutableLiveData<>();
-    private LoginCallApi loginCallApi;
 
-    public LoginVM() {
-        this.userData = Db.getDB().userDAO().getUser();
-    }
+//    SQLite
 
-    //SQLite
-    public LiveData<User> getUserData() {
+    public MutableLiveData<User> getUserData() {
         return this.userData;
     }
 
-    public void insertUserData(String mUsername, String mEmail) {
+    public void checkUser() {
+        loginRepository.getUser(new HandleSuccess<User>() {
+            @Override
+            public void handleSuccessResult(User result) {
+                Log.i("StartActivity","Data:");
+                userData.setValue(result);
+            }
+        }, new HandleError<String>() {
+            @Override
+            public void handleErrorResult(String error) {
+                errorData.setValue(error);
+            }
+        });
+    }
+
+    public void insertUserData(int id, String mUsername, String mEmail) {
         User mUser = new User();
+        mUser.id = id;
         mUser.username = mUsername;
         mUser.email = mEmail;
-        Db.getDB().userDAO().insertUser(mUser);
+        loginRepository.insertUser(mUser, new HandleSuccess<Long>() {
+            @Override
+            public void handleSuccessResult(Long rowId) {
+                rowIdInsert.setValue(rowId);
+            }
+        }, new HandleError<String>() {
+            @Override
+            public void handleErrorResult(String error) {
+                errorData.setValue(error);
+            }
+        });
     }
 
     //Call api
@@ -39,17 +63,18 @@ public class LoginVM extends ViewModel {
         return mCheckLogin;
     }
 
-    public void setLoginCallApi() {
-        loginCallApi = new LoginCallApi();
-        Log.i("Login","setLoginCallApi");
-    }
 
     public void checkLogin(LoginModel mLoginModel) {
-        loginCallApi.checkLogin(mLoginModel, new HandleResult<LoginResponse>() {
+        loginRepository.checkLoginApi(mLoginModel, new HandleSuccess<LoginResponse>() {
             @Override
-            public void handleResponseResult(LoginResponse result) {
+            public void handleSuccessResult(LoginResponse result) {
                 Log.i("Login", "Result Login: " + result);
                 mCheckLogin.setValue(result);
+            }
+        }, new HandleError<String>() {
+            @Override
+            public void handleErrorResult(String error) {
+
             }
         });
     }

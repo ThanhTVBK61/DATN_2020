@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_centerInParent="true"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="12dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.joooonho.SelectableRoundedImageView
+            android:id="@+id/imgFavouritePlaceAccount"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop" />
+
+        <ImageButton
+            android:id="@+id/ibFavouritePlaceAccount"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/imgFavouritePlaceAccount"
+            android:layout_margin="10dp"
+            android:backgroundTint="@color/colorWhite"
+            android:src="@drawable/ic_love" />
+
+        <TextView
+            android:id="@+id/tvNameFavouritePlaceAccount"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgFavouritePlaceAccount"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack"
+            android:text="Công viên Thống Nhất  nhất Công viên thống nhất" />
+
+        <TextView
+            android:id="@+id/tvAddressFavouritePlaceAccount"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvNameFavouritePlaceAccount"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:text="101A Phương Mai Đống Đa Hà Nội" />
+
+        <RatingBar
+            android:id="@+id/ratingMarkFavouritePlaceAccount"
+            style="@style/RatingBarStar"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="15dp"
+            android:isIndicator="true"/>
+
+        <TextView
+            android:id="@+id/tvNumberRatingFavouritePlaceAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="18dp"
+            android:layout_toEndOf="@+id/ratingMarkFavouritePlaceAccount"
+            android:text="123434 đánh giá"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

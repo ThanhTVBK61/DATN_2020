@@ -19,4 +19,6 @@
     <color name="colorBoundImage">#7DD0F6</color>
     <color name="colorStar">#FCCE31</color>
     <color name="transparent">#00000000</color>
+    <color name="notification">#e5eaf2</color>
+    <color name="comment">#f2f3f5</color>
 </resources>

@@ -48,7 +48,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:text="07:34 23/04/2019"/>
+        android:text="07:34 23/04/2019"
+        android:layout_marginEnd="25dp"/>
+
+    <ImageView
+        android:id="@+id/ivMoreOption"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/ic_three_dots"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"/>
 
     <TextView
         android:id="@+id/tvContentPost"
@@ -118,10 +127,12 @@
         android:orientation="horizontal"
         android:padding="10dp">
         <ImageView
+            android:id="@+id/ivLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_like_border" />
         <TextView
+            android:id="@+id/tvLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
@@ -130,6 +141,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/llComment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/vPostLine"

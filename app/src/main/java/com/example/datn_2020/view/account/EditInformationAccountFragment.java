@@ -1,5 +1,8 @@
 package com.example.datn_2020.view.account;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -14,80 +18,70 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
+import com.example.datn_2020.repository.model.CurrentUser;
 import com.example.datn_2020.repository.model.InformationAccountModel;
-import com.example.datn_2020.viewmodel.account.InformationAccountVM;
+import com.example.datn_2020.view.start.StartActivity;
+import com.example.datn_2020.viewmodel.ContainerVM;
 
-public class EditInformationAccountFragment extends Fragment implements View.OnClickListener, EditSexAccountDialogFragment.SelectSexDialogInterface, View.OnFocusChangeListener {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class EditInformationAccountFragment extends Fragment implements View.OnClickListener, EditSexAccountDialogFragment.SelectSexDialogInterface, View.OnFocusChangeListener, DatePickerDialog.OnDateSetListener {
 
     private Toolbar editToolbar;
-    private RelativeLayout rlEditName,rlEditDatetime,rlEditSex,rlEditDescription;
-    private ImageView ivClearName, ivClearDescription;
+    private RelativeLayout rlEditDatetime, rlEditSex, rlEditDescription;
+    private ImageView ivClearDescription;
     private TextView tvSave;
 
-    private EditText etName,etDescription;
-    private TextView tvBirthday,tvSex;
-    private TextView tvNotificationNameAccount;
+    private EditText etDescription;
+    private TextView tvSex;
+    private TextView tvEditNameInformation;
+    private TextView tvDatetimeInformation;
 
     private RelativeLayout rlActive;
-    private ImageView ivActive;
 
-    private InformationAccountVM informationAccountVM ;
-    private InformationAccountModel newInformationAccountModel = new InformationAccountModel();
+    private ContainerVM informationAccountVM;
+
+    private FragmentActivity fragmentActivity;
+
+    private Context mContext;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_edit_information_account, container,false);
+        View view = inflater.inflate(R.layout.fragment_edit_information_account, container, false);
 
         registerViews(view);
 
+        if(getActivity()!=null){
+            fragmentActivity =getActivity();
+        }
+
         // Gọi tác với View Model
-        informationAccountVM = new ViewModelProvider(getActivity()).get(InformationAccountVM.class);
+        informationAccountVM = new ViewModelProvider(fragmentActivity).get(ContainerVM.class);
         // Thêm các giá trị mặc đinh
         registerDataInformation();
         registerButtonSave();
         registerButtonBack();
 
-        rlActive = rlEditName;
-        ivActive = ivClearName;
+        tvEditNameInformation.setText(CurrentUser.getInstance().username);
 
-        rlEditName.setOnClickListener(this);
+        rlActive = rlEditDatetime;
+
         rlEditDatetime.setOnClickListener(this);
         rlEditSex.setOnClickListener(this);
         rlEditDescription.setOnClickListener(this);
-        etName.setOnFocusChangeListener(this);
         etDescription.setOnFocusChangeListener(this);
         tvSave.setOnClickListener(this);
 
-        etName.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence input, int start, int before, int count) {
-                if(input.length() == 0){
-                    rlEditName.setBackgroundResource(R.drawable.shape_edit_information_error);
-                    tvNotificationNameAccount.setVisibility(View.VISIBLE);
-                    ivClearName.setVisibility(View.GONE);
-                }else {
-                    rlEditName.setBackgroundResource(R.drawable.shape_edit_information_pressed);
-                    tvNotificationNameAccount.setVisibility(View.GONE);
-                    ivClearName.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
         etDescription.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -96,9 +90,12 @@ public class EditInformationAccountFragment extends Fragment implements View.OnC
 
             @Override
             public void onTextChanged(CharSequence input, int start, int before, int count) {
-                if(input.length() == 0){
+                tvSave.setTextColor(tvSave.getResources().getColor(R.color.colorBlue700));
+//                tvSave.setTextColor(ContextCompat.getColor(mContext,R.color.colorBlue700));
+
+                if (input.length() == 0) {
                     ivClearDescription.setVisibility(View.GONE);
-                }else {
+                } else {
                     ivClearDescription.setVisibility(View.VISIBLE);
                 }
             }
@@ -109,25 +106,21 @@ public class EditInformationAccountFragment extends Fragment implements View.OnC
             }
         });
 
-        ivClearName.setOnClickListener(this);
         ivClearDescription.setOnClickListener(this);
         return view;
     }
 
     private void registerViews(View view) {
         editToolbar = view.findViewById(R.id.tbEditInformationAccount);
-        rlEditName = view.findViewById(R.id.rlEditNameInformation);
         rlEditDatetime = view.findViewById(R.id.rlEditDatetimeInformation);
         rlEditSex = view.findViewById(R.id.rlEditSexInformation);
         rlEditDescription = view.findViewById(R.id.rlEditDescriptionInformation);
-        etName = view.findViewById(R.id.etEditNameInformation);
-        tvBirthday = view.findViewById(R.id.tvEditDatetimeInformation);
+        tvEditNameInformation = view.findViewById(R.id.tvEditNameInformation);
         tvSex = view.findViewById(R.id.tvEditSexInformation);
+        tvDatetimeInformation = view.findViewById(R.id.tvDatetimeInformation);
         etDescription = view.findViewById(R.id.etEditDescriptionInformation);
-        ivClearName = view.findViewById(R.id.ivEditNameInformation);
         ivClearDescription = view.findViewById(R.id.ivEditDescriptionInformation);
         tvSave = view.findViewById(R.id.tvSaveInformationAccount);
-        tvNotificationNameAccount = view.findViewById(R.id.tvNotificationNameAccount);
     }
 
     private void registerButtonBack() {
@@ -146,32 +139,29 @@ public class EditInformationAccountFragment extends Fragment implements View.OnC
     }
 
     private void registerDataInformation() {
-        informationAccountVM.getInfoAccountResponse().observe(getActivity(), new Observer<InformationAccountModel>() {
+        informationAccountVM.getInfoAccountResponse().observe(getViewLifecycleOwner(), new Observer<InformationAccountModel>() {
             @Override
             public void onChanged(InformationAccountModel informationAccountModel) {
 
-                //Vi se add ten mac dinh vao
-                etName.setText(informationAccountModel.getName());
-
-                if(informationAccountModel.getDatetime().equals(" ")) {
-                    tvBirthday.setText("Thêm ngày sinh");
-                    tvBirthday.setTextColor(getResources().getColor(R.color.colorGray));
-                }else {
-                    tvBirthday.setText(informationAccountModel.getDatetime());
+                if (informationAccountModel.getDatetime().equals(" ")) {
+                    tvDatetimeInformation.setText("Thêm ngày sinh");
+                    tvDatetimeInformation.setTextColor(getResources().getColor(R.color.colorGray));
+                } else {
+                    tvDatetimeInformation.setText(informationAccountModel.getDatetime());
                 }
 
-                if(informationAccountModel.getSex() == 2) {
+                if (informationAccountModel.getSex() == 2) {
                     tvSex.setText("Thêm giới tính");
                     tvSex.setTextColor(getResources().getColor(R.color.colorGray));
-                }else if(informationAccountModel.getSex() == 0){
+                } else if (informationAccountModel.getSex() == 0) {
                     tvSex.setText("Nữ");
-                }else{
+                } else if (informationAccountModel.getSex() == 1){
                     tvSex.setText("Nam");
+                }else {
+                    tvSex.setText("...");
                 }
 
-                if(informationAccountModel.getDescription().equals(" ")) {
-                    etDescription.setHint("Thêm mô tả về bản thân");
-                }else {
+                if (informationAccountModel.getDescription() != null) {
                     etDescription.setText(informationAccountModel.getDescription());
                 }
             }
@@ -180,100 +170,183 @@ public class EditInformationAccountFragment extends Fragment implements View.OnC
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.rlEditNameInformation:
-                etName.requestFocus();
-                etName.setSelection(etName.getText().length());
-                break;
+        switch (v.getId()) {
             case R.id.rlEditDescriptionInformation:
+
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information);
+                rlActive = rlEditDescription;
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
+
                 etDescription.requestFocus();
                 etDescription.setSelection(etDescription.getText().length());
                 break;
 
             case R.id.rlEditDatetimeInformation:
-                if(rlActive != rlEditName || etName.getText().length() != 0){
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information);
-                }else {
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information_error);
-                }
+
+                etDescription.clearFocus();
+
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information);
                 rlActive = rlEditDatetime;
                 rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
 
+                showDataPickerDialog();
+
                 break;
             case R.id.rlEditSexInformation:
-                if(rlActive != rlEditName || etName.getText().length() != 0){
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information);
-                }else {
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information_error);
-                }
+
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information);
                 rlActive = rlEditSex;
                 rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
 
                 EditSexAccountDialogFragment editSexAccountDialogFragment = new EditSexAccountDialogFragment();
                 editSexAccountDialogFragment.setSelectSexDialog(this);
-                editSexAccountDialogFragment.show(getChildFragmentManager(),null);
-                break;
-
-            case R.id.ivEditNameInformation:
-                etName.getText().clear();
-                etName.setHint("Nhập họ tên");
+                editSexAccountDialogFragment.show(getChildFragmentManager(), null);
                 break;
 
             case R.id.ivEditDescriptionInformation:
                 etDescription.getText().clear();
-                etDescription.setHint("Thêm mô tả về bản thân");
+                Log.i("EditInformation","Text: "+ etDescription.getText().toString().length());
                 break;
 
             case R.id.tvSaveInformationAccount:
+                if(tvSave.getCurrentTextColor()==getResources().getColor(R.color.colorBlue700)){
+                    Log.i("EditInformation","Save");
+                    String username = tvEditNameInformation.getText().toString();
+                    String datetime = tvDatetimeInformation.getText().toString();
+                    if(datetime.equals("...")){
+                        datetime = "";
+                    }
+                    int mSex = -1;
+                    String sex = tvSex.getText().toString();
 
+                    if(sex.equals("Nam")){
+                        mSex = 1;
+                    }else if(sex.equals("Nữ")){
+                        mSex = 0;
+                    }
+
+                    String description = etDescription.getText().toString();
+                    Log.i("EditInformation","Data: "+username+""+datetime+""+mSex+""+description);
+                    InformationAccountModel newInformationAccountModel = new InformationAccountModel(username, datetime, mSex, description);
+                    informationAccountVM.updateInformationAccount(newInformationAccountModel);
+                    informationAccountVM.getResponseUpdateAccount().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
+                        @Override
+                        public void onChanged(Boolean result) {
+                            if(result){
+                                //Tạo đối tượng
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setTitle("Thông báo");
+                                builder.setMessage("Cập nhật thông tin thành công !");
+                                //Nút Cancel
+                                builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                                //Tạo dialog
+                                AlertDialog alertDialog = builder.create();
+                                //Hiển thị
+                                alertDialog.show();
+                                alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorBlue700));
+                            }else {
+                                //Tạo đối tượng
+                                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                                builder.setTitle("Thông báo");
+                                builder.setMessage("Cập nhật thông tin không thành công !");
+                                //Nút Cancel
+                                builder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+
+                                //Tạo dialog
+                                AlertDialog alertDialog = builder.create();
+                                //Hiển thị
+                                alertDialog.show();
+                                alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorBlue700));
+                            }
+                        }
+                    });
+                }
                 break;
+        }
+    }
+
+    private void showDataPickerDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(mContext, this, Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.DATE, dayOfMonth);
+
+        Date dateOne = calendar.getTime();
+        Date currentDate = new Date();
+
+        if (dateOne.after(currentDate)) {
+            //Tạo đối tượng
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+            builder.setTitle("Thông báo");
+            builder.setMessage("Ngày sinh không phù hợp!");
+            //Nút Cancel
+            builder.setNegativeButton("Đóng", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.cancel();
+                }
+            });
+
+            //Tạo dialog
+            AlertDialog alertDialog = builder.create();
+            //Hiển thị
+            alertDialog.show();
+            alertDialog.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(getResources().getColor(R.color.colorBlue700));
+        } else {
+            tvSave.setTextColor(tvSave.getResources().getColor(R.color.colorBlue700));
+            tvDatetimeInformation.setText(formatter.format(dateOne));
         }
     }
 
     @Override
     public void selectSex(String sex) {
-        Log.i("Callback ",sex);
-        tvSave.setTextColor(getResources().getColor(R.color.colorBlue700));
+        Log.i("Callback ", sex);
+        tvSex.setText(sex);
+        tvSave.setTextColor(tvSave.getResources().getColor(R.color.colorBlue700));
     }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        switch (v.getId()){
-            case R.id.etEditNameInformation:
-                if(hasFocus) {
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information);
-                    rlActive = rlEditName;
-                    ivActive.setVisibility(View.GONE);
-                    ivActive = ivClearName;
-                    if(etName.getText().length() == 0){
-                        rlActive.setBackgroundResource(R.drawable.shape_edit_information_error);
-                        ivActive.setVisibility(View.GONE);
-                    }else {
-                        rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
-                        ivActive.setVisibility(View.VISIBLE);
-                    }
-                }
-                break;
-            case R.id.etEditDescriptionInformation:
-                if(hasFocus) {
-                    if(rlActive != rlEditName || etName.getText().length() != 0){
-                        rlActive.setBackgroundResource(R.drawable.shape_edit_information);
-                    }else {
-                        rlActive.setBackgroundResource(R.drawable.shape_edit_information_error);
-                    }
-                    rlActive = rlEditDescription;
-                    rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
+        if (v.getId() == R.id.etEditDescriptionInformation) {
+            if (hasFocus) {
 
-                    ivActive.setVisibility(View.GONE);
-                    ivActive = ivClearDescription;
-                    if (etDescription.getText().length() == 0){
-                        ivActive.setVisibility(View.GONE);
-                    }else {
-                        ivActive.setVisibility(View.VISIBLE);
-                    }
-
-                }
-                break;
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information);
+                rlActive = rlEditDescription;
+                rlActive.setBackgroundResource(R.drawable.shape_edit_information_pressed);
+            }
         }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
     }
 }

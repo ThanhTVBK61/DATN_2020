@@ -14,15 +14,16 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
+import com.example.datn_2020.repository.model.CurrentUser;
 import com.example.datn_2020.repository.model.InformationAccountModel;
-import com.example.datn_2020.repository.network.DisposableManager;
-import com.example.datn_2020.viewmodel.account.InformationAccountVM;
+import com.example.datn_2020.view.start.StartActivity;
+import com.example.datn_2020.viewmodel.ContainerVM;
 
 import java.util.Objects;
 
 public class InformationAccountFragment extends Fragment {
 
-    private InformationAccountVM informationAccountVM;
+    private ContainerVM informationAccountVM;
     private Toolbar toolbar;
     private TextView editInformationAccount;
     private TextView tvNameInformation,tvDatetimeInformation,tvSexInformation,tvDescriptionInformation;
@@ -35,9 +36,9 @@ public class InformationAccountFragment extends Fragment {
         registerToolbar();
 
         //Gọi view model
-        informationAccountVM = new ViewModelProvider(getActivity()).get(InformationAccountVM.class);
+        informationAccountVM = new ViewModelProvider(getActivity()).get(ContainerVM.class);
         //Load dữ liệu từ sever
-        informationAccountVM.loadInfoAccount();
+        informationAccountVM.loadInfoAccount(CurrentUser.getInstance().id);
         registerDataViews();
 
         editInformationAccount.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +74,8 @@ public class InformationAccountFragment extends Fragment {
     }
 
     private void registerDataViews() {
-        informationAccountVM.getInfoAccountResponse().observe(getActivity(), new Observer<InformationAccountModel>() {
+        informationAccountVM.getInfoAccountResponse().observe(getViewLifecycleOwner(), new Observer<InformationAccountModel>() {
+
             @Override
             public void onChanged(InformationAccountModel informationAccountModel) {
 
@@ -82,23 +84,23 @@ public class InformationAccountFragment extends Fragment {
 
                 if(informationAccountModel.getDatetime().equals(" ")) {
                     tvDatetimeInformation.setText("Thêm thông tin");
-                    tvDatetimeInformation.setTextColor(getResources().getColor(R.color.colorGray));
+                    tvDatetimeInformation.setTextColor(tvDatetimeInformation.getResources().getColor(R.color.colorGray));
                 }else {
                     tvDatetimeInformation.setText(informationAccountModel.getDatetime());
                 }
 
                 if(informationAccountModel.getSex() == 2) {
                     tvSexInformation.setText("Thêm thông tin");
-                    tvSexInformation.setTextColor(getResources().getColor(R.color.colorGray));
+                    tvSexInformation.setTextColor(tvSexInformation.getResources().getColor(R.color.colorGray));
                 }else if(informationAccountModel.getSex() == 0){
                     tvSexInformation.setText("Nữ");
                 }else{
                     tvSexInformation.setText("Nam");
                 }
 
-                if(informationAccountModel.getDescription().equals(" ")) {
+                if(informationAccountModel.getDescription() == null) {
                     tvDescriptionInformation.setText("Thêm thông tin");
-                    tvDescriptionInformation.setTextColor(getResources().getColor(R.color.colorGray));
+                    tvDescriptionInformation.setTextColor(tvDescriptionInformation.getResources().getColor(R.color.colorGray));
                 }else {
                     tvDescriptionInformation.setText(informationAccountModel.getDescription());
                 }
@@ -109,6 +111,5 @@ public class InformationAccountFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        DisposableManager.dispose();
     }
 }

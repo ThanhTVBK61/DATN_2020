@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Sửa"
             style="@style/textview_toolbar"
-            android:layout_marginLeft="235dp"
+            android:layout_marginStart="235dp"
             android:background="?attr/selectableItemBackground" />
     </androidx.appcompat.widget.Toolbar>
 

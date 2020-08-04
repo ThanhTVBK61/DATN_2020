@@ -18,17 +18,26 @@
             android:layout_height="157dp"
             android:scaleType="centerCrop" />
 
-        <CheckBox
-            android:id="@+id/cbFavourite"
+        <ImageButton
+            android:id="@+id/ibFavourite"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_below="@+id/imgPlace"
             android:layout_alignParentEnd="true"
-            android:layout_margin="10dp"
-            android:button="@drawable/selector_checkbox_favourite" />
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/colorWhite"/>
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/cbFavourite"-->
+<!--            android:layout_width="30dp"-->
+<!--            android:layout_height="30dp"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:button="@drawable/selector_checkbox_favourite" />-->
 
         <TextView
             android:id="@+id/tvNamePlace"
-            android:layout_width="240dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/imgPlace"
             android:layout_marginStart="20dp"

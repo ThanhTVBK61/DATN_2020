@@ -2,6 +2,7 @@ package com.example.datn_2020.view.account;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
@@ -16,7 +17,7 @@ import java.util.Objects;
 
 public class AddressAccountFragment extends Fragment {
 
-    private Toolbar toolbar;
+    private Toolbar tbAddressAccount;
     private TextView tvEditAddress;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -24,11 +25,12 @@ public class AddressAccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_address_account, container, false);
 
-        toolbar = view. findViewById(R.id.tbAddressAccount);
         tvEditAddress = view.findViewById(R.id.tvEditAddressAccount);
+        tbAddressAccount = view.findViewById(R.id.tbAddressAccount);
 
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        tbAddressAccount.setNavigationIcon(R.drawable.ic_back);
+        tbAddressAccount.setNavigationOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View v) {
                 AccountFragment accountFragment = (AccountFragment) getParentFragment();

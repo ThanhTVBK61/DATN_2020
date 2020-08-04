@@ -5,17 +5,28 @@ public class SignUpModel {
     private String password;
     private String email;
     private String address;
-    private String sex;
+    private int sex;
+    private String birthday;
+    private String type = "Thành viên";
 
     public SignUpModel() {
     }
 
-    public SignUpModel(String username, String password, String email, String address, String sex) {
+    public SignUpModel(String username, String password, String email, String address, int sex,String birthday) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.address = address;
         this.sex = sex;
+        this.birthday = birthday;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getUsername() {
@@ -50,11 +61,11 @@ public class SignUpModel {
         this.address = address;
     }
 
-    public String getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 }

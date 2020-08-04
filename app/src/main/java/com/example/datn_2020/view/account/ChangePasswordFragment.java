@@ -1,5 +1,6 @@
 package com.example.datn_2020.view.account;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -26,8 +27,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.datn_2020.R;
 import com.example.datn_2020.repository.model.ChangePasswordModel;
-import com.example.datn_2020.view.login.LoginActivity;
-import com.example.datn_2020.viewmodel.account.SettingVM;
+import com.example.datn_2020.repository.model.CurrentUser;
+import com.example.datn_2020.view.start.StartActivity;
+import com.example.datn_2020.viewmodel.ContainerVM;
 
 public class ChangePasswordFragment extends Fragment implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
@@ -41,7 +43,8 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
     private RelativeLayout rlOldPassword, rlNewPassword;
     private TextView tvNotificationChangePassword;
 
-    private SettingVM settingVM;
+    private ContainerVM settingVM;
+    private Context mContext;
 
 
     @Override
@@ -50,10 +53,9 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
         registerViews(view);
         registerToolbar();
 
-        settingVM = new ViewModelProvider(getActivity()).get(SettingVM.class);
-        settingVM.setChangePassCallApi();
+        settingVM = new ViewModelProvider(getActivity()).get(ContainerVM.class);
 
-        tvUsernameChangePassword.setText(LoginActivity.USERNAME);
+        tvUsernameChangePassword.setText(CurrentUser.getInstance().username);
         btnChangePassword.setOnClickListener(this);
 
         cbNewPassword.setOnCheckedChangeListener(this);
@@ -125,14 +127,14 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
                 }
 
                 if (check == 0) {
-                    ChangePasswordModel changePasswordModel = new ChangePasswordModel(LoginActivity.USERNAME, oldPass, newPass);
+                    ChangePasswordModel changePasswordModel = new ChangePasswordModel(CurrentUser.getInstance().username, oldPass, newPass);
                     settingVM.changePassword(changePasswordModel);
-                    settingVM.getResponse().observe(getActivity(), new Observer<Boolean>() {
+                    settingVM.getResponse().observe(getViewLifecycleOwner(), new Observer<Boolean>() {
                         @Override
                         public void onChanged(Boolean result) {
                             Log.i("Change Password", String.valueOf(result));
                             if (result) {
-                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+                                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
                                 alertDialogBuilder.setTitle("Đổi mật khẩu");
                                 alertDialogBuilder.setMessage("Đổi mật khẩu thành công!");
                                 alertDialogBuilder.setPositiveButton("Đóng", new DialogInterface.OnClickListener() {
@@ -193,5 +195,19 @@ public class ChangePasswordFragment extends Fragment implements View.OnClickList
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        mContext = context;
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+        mContext = null;
     }
 }

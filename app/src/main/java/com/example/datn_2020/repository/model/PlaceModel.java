@@ -2,7 +2,7 @@ package com.example.datn_2020.repository.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ListPlaceModel {
+public class PlaceModel {
 
     @SerializedName("IdPlace")
     private int idPlace;
@@ -12,6 +12,8 @@ public class ListPlaceModel {
     private String address;
     @SerializedName("ListImageUrl")
     private String srcImage;
+    @SerializedName("TypePlace")
+    private String type;
     @SerializedName("CoordinatePlace")
     private String coordinatePlace;
     @SerializedName("Location")
@@ -24,23 +26,25 @@ public class ListPlaceModel {
     private String service;
     @SerializedName("SumRating")
     private int sumRating;
+    @SerializedName("MyFavourite")
+    private int favourite;
 
-    private Boolean favourite = false;
-
-    public ListPlaceModel() {
+    public PlaceModel() {
     }
 
-    public ListPlaceModel(int idPlace, String namePlace, String address, String srcImage, String coordinatePlace, String location, String price, String quality, String service, int sumRating) {
+    public PlaceModel(int idPlace, String namePlace, String address, String srcImage, String type, String coordinatePlace, String location, String price, String quality, String service, int sumRating, int favourite) {
         this.idPlace = idPlace;
         this.namePlace = namePlace;
         this.address = address;
         this.srcImage = srcImage;
+        this.type = type;
         this.coordinatePlace = coordinatePlace;
         this.location = location;
         this.price = price;
         this.quality = quality;
         this.service = service;
         this.sumRating = sumRating;
+        this.favourite = favourite;
     }
 
     public int getIdPlace() {
@@ -57,6 +61,14 @@ public class ListPlaceModel {
 
     public void setNamePlace(String namePlace) {
         this.namePlace = namePlace;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAddress() {
@@ -83,44 +95,44 @@ public class ListPlaceModel {
         this.coordinatePlace = coordinatePlace;
     }
 
-    public double getLocation() {
+    public float getLocation() {
         if(price != null){
             return Float.parseFloat(location);
         }
-        return 0.0;
+        return 0.0f;
     }
 
     public void setLocation(String location) {
         this.location = location;
     }
 
-    public double getQuality() {
+    public float getQuality() {
         if(price != null){
             return Float.parseFloat(quality);
         }
-        return 0.0;
+        return 0.0f;
     }
 
     public void setQuality(String quality) {
         this.quality = quality;
     }
 
-    public double getService() {
+    public float getService() {
         if(price != null){
             return Float.parseFloat(service);
         }
-        return 0.0;
+        return 0.0f;
     }
 
     public void setService(String service) {
         this.service = service;
     }
 
-    public double getPrice() {
+    public float getPrice() {
         if(price != null){
             return Float.parseFloat(price);
         }
-        return 0.0;
+        return 0.0f;
     }
 
     public void setPrice(String price) {
@@ -135,11 +147,11 @@ public class ListPlaceModel {
         this.sumRating = sumRating;
     }
 
-    public Boolean getFavourite() {
+    public int getFavourite() {
         return favourite;
     }
 
-    public void setFavourite(Boolean favourite) {
+    public void setFavourite(int favourite) {
         this.favourite = favourite;
     }
 }
